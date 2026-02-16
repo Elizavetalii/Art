@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Панель менеджера{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/manager.html" %}{% endblock %}
+{% block topbar_title %}Панель менеджера{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/manager/">Кабинет менеджера</a> / Обзор
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Обзор</h4>
+    <div class="d-flex gap-2">
+      <a href="/clients/create/" class="btn btn-primary">Новый клиент</a>
+      <a href="/orders/create/" class="btn btn-outline-secondary">Новый заказ</a>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.clients }}</div>
+        <div class="kpi-label">Клиентов в базе</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.orders }}</div>
+        <div class="kpi-label">Всего заказов</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.active_orders }}</div>
+        <div class="kpi-label">Заказы в работе</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="section-header">
+          <h6 class="mb-0">Новые клиенты</h6>
+          <a href="/clients/" class="link-muted">Все клиенты</a>
+        </div>
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <thead>
+              <tr>
+                <th>Название</th>
+                <th>Статус</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for c in recent_clients %}
+                <tr>
+                  <td><a href="/clients/{{ c.id }}/" class="text-decoration-none">{{ c.name }}</a></td>
+                  <td>{{ c.get_status_display }}</td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="2" class="text-muted">Нет данных</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="section-header">
+          <h6 class="mb-0">Последние заказы</h6>
+          <a href="/orders/" class="link-muted">Все заказы</a>
+        </div>
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <thead>
+              <tr>
+                <th>Номер</th>
+                <th>Клиент</th>
+                <th>Статус</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for o in recent_orders %}
+                <tr>
+                  <td>{{ o.order_number }}</td>
+                  <td>{{ o.client.name }}</td>
+                  <td>{{ o.get_status_display }}</td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="3" class="text-muted">Нет данных</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Заказы на доставку{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/logistic.html" %}{% endblock %}
+{% block topbar_title %}Заказы на доставку{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/logistic/">Кабинет логиста</a> / Доставки
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Заказы, требующие доставки</h4>
+    <div class="d-flex gap-2">
+      <a href="/logistics/routes/" class="btn btn-outline-secondary">Маршруты</a>
+      <a href="/logistics/couriers/" class="btn btn-outline-secondary">Курьеры</a>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <form class="filters" method="get">
+      <select class="form-select" name="client">
+        <option value="">Все клиенты</option>
+        {% for c in clients %}
+          <option value="{{ c.id }}" {% if request.GET.client == c.id|stringformat:"s" %}selected{% endif %}>
+            {{ c.name }}
+          </option>
+        {% endfor %}
+      </select>
+      <select class="form-select" name="courier">
+        <option value="">Все курьеры</option>
+        {% for c in couriers %}
+          <option value="{{ c.id }}" {% if request.GET.courier == c.id|stringformat:"s" %}selected{% endif %}>
+            {{ c.user.full_name }}
+          </option>
+        {% endfor %}
+      </select>
+      <select class="form-select" name="route">
+        <option value="">Все маршруты</option>
+        {% for r in routes %}
+          <option value="{{ r.id }}" {% if request.GET.route == r.id|stringformat:"s" %}selected{% endif %}>
+            {{ r.planned_date|date:"d.m.Y" }}
+          </option>
+        {% endfor %}
+      </select>
+      <select class="form-select" name="status">
+        <option value="">Все статусы</option>
+        {% for value, label in status_choices %}
+          <option value="{{ value }}" {% if request.GET.status == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+      <input class="form-control" type="date" name="date" value="{{ request.GET.date }}">
+      <select class="form-select" name="sort">
+        <option value="">Сортировка</option>
+        <option value="planned_at" {% if request.GET.sort == "planned_at" %}selected{% endif %}>По плану ↑</option>
+        <option value="-planned_at" {% if request.GET.sort == "-planned_at" %}selected{% endif %}>По плану ↓</option>
+        <option value="status" {% if request.GET.sort == "status" %}selected{% endif %}>По статусу ↑</option>
+        <option value="-status" {% if request.GET.sort == "-status" %}selected{% endif %}>По статусу ↓</option>
+        <option value="client" {% if request.GET.sort == "client" %}selected{% endif %}>По клиенту A‑Я</option>
+        <option value="-client" {% if request.GET.sort == "-client" %}selected{% endif %}>По клиенту Я‑A</option>
+      </select>
+      <button class="btn btn-outline-secondary" type="submit">Фильтр</button>
+      {% if request.GET.urlencode %}
+        <a class="btn btn-outline-secondary" href="/logistics/?{{ request.GET.urlencode }}&export=1">Экспорт</a>
+      {% else %}
+        <a class="btn btn-outline-secondary" href="/logistics/?export=1">Экспорт</a>
+      {% endif %}
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Заказ</th>
+            <th>Клиент</th>
+            <th>Адрес</th>
+            <th>План</th>
+            <th>Курьер</th>
+            <th>Маршрут</th>
+            <th>Статус</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for d in deliveries %}
+            <tr>
+              <td>{{ d.order.order_number }}</td>
+              <td>{{ d.order.client.name }}</td>
+              <td>{{ d.address|default:"—" }}</td>
+              <td>{{ d.planned_at|date:"d.m.Y H:i"|default:"—" }}</td>
+              <td>{{ d.courier.user.full_name|default:"—" }}</td>
+              <td>{{ d.route.planned_date|date:"d.m.Y"|default:"—" }}</td>
+              <td>
+                <span class="badge-soft {% if d.status == 'Доставлено' %}success{% elif d.status == 'Отменено' %}danger{% elif d.status == 'В пути' %}primary{% else %}warn{% endif %}">
+                  {{ d.status }}
+                </span>
+              </td>
+              <td class="text-end">
+                <a class="btn btn-sm btn-outline-secondary" href="/logistics/delivery/{{ d.id }}/">Открыть</a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="8" class="text-muted">Нет доставок</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mt-3">
+    <h6>Заказы без доставки</h6>
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Номер</th>
+            <th>Клиент</th>
+            <th>Сумма</th>
+            <th>Статус заказа</th>
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for o in orders_without_delivery %}
+            <tr>
+              <td>{{ o.order_number }}</td>
+              <td>{{ o.client.name }}</td>
+              <td>{{ o.total_amount }}</td>
+              <td>{{ o.get_status_display }}</td>
+              <td class="text-end">
+                <a class="btn btn-sm btn-outline-secondary" href="/logistics/orders/{{ o.id }}/delivery/">Создать доставку</a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="5" class="text-muted">Все заказы уже имеют доставку</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

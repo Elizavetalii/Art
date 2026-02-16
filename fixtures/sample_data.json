@@ -1,0 +1,184 @@
+[
+  {
+    "model": "crm.role",
+    "pk": 1,
+    "fields": { "name": "Администратор" }
+  },
+  {
+    "model": "crm.role",
+    "pk": 2,
+    "fields": { "name": "Менеджер" }
+  },
+  {
+    "model": "crm.role",
+    "pk": 3,
+    "fields": { "name": "Логист" }
+  },
+  {
+    "model": "crm.role",
+    "pk": 4,
+    "fields": { "name": "Курьер" }
+  },
+  {
+    "model": "crm.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$HSy7RUK1SkOyqq$CHQ5S5Jydods8TS6nt3ntdAtL3AOeNu51dU8dISb4F0=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2026-02-03T00:00:00Z",
+      "full_name": "Админ Система",
+      "phone": "+7 900 000 0000"
+    }
+  },
+  {
+    "model": "crm.userrole",
+    "pk": 1,
+    "fields": { "user": 1, "role": 1, "assigned_at": "2026-02-03T00:00:00Z" }
+  },
+  {
+    "model": "crm.client",
+    "pk": 1,
+    "fields": {
+      "name": "Магазин «ВкусМаркет»",
+      "client_type": "store",
+      "inn": "7701234567",
+      "kpp": "770101001",
+      "default_delivery_address": "Москва, ул. Пряничная, 10",
+      "email": "buyer@vkusmarket.ru",
+      "phone": "+7 495 123-45-67",
+      "status": "active",
+      "responsible_manager": 1
+    }
+  },
+  {
+    "model": "crm.clientcontact",
+    "pk": 1,
+    "fields": {
+      "client": 1,
+      "full_name": "Ирина Покупатель",
+      "position": "закупщик",
+      "phone": "+7 903 111-22-33",
+      "email": "irina@vkusmarket.ru",
+      "is_primary": true
+    }
+  },
+  {
+    "model": "crm.cooperationstage",
+    "pk": 1,
+    "fields": { "name": "Переговоры", "order": 1, "is_active": true }
+  },
+  {
+    "model": "crm.cooperationstage",
+    "pk": 2,
+    "fields": { "name": "Тестовый заказ", "order": 2, "is_active": true }
+  },
+  {
+    "model": "crm.clientstagehistory",
+    "pk": 1,
+    "fields": {
+      "client": 1,
+      "stage": 2,
+      "changed_by": 1,
+      "changed_at": "2026-02-03T09:00:00Z",
+      "comment": "Согласовали первый пробный заказ"
+    }
+  },
+  {
+    "model": "crm.interaction",
+    "pk": 1,
+    "fields": {
+      "client": 1,
+      "manager": 1,
+      "interaction_type": "call",
+      "note": "Обсудили ассортимент завтраков",
+      "happened_at": "2026-02-03T08:30:00Z"
+    }
+  },
+  {
+    "model": "crm.ingredient",
+    "pk": 1,
+    "fields": { "name": "Куриное филе", "is_active": true }
+  },
+  {
+    "model": "crm.ingredient",
+    "pk": 2,
+    "fields": { "name": "Картофель", "is_active": true }
+  },
+  {
+    "model": "crm.dish",
+    "pk": 1,
+    "fields": {
+      "name": "Картофель по-деревенски",
+      "unit": "кг",
+      "is_active": true,
+      "created_by": 1
+    }
+  },
+  {
+    "model": "crm.techcard",
+    "pk": 1,
+    "fields": {
+      "dish": 1,
+      "version_label": "v1",
+      "description": "Запекание картофеля с кожурой",
+      "photo_url": "",
+      "is_active": true,
+      "approved_by": 1
+    }
+  },
+  {
+    "model": "crm.techcardcomponent",
+    "pk": 1,
+    "fields": {
+      "tech_card": 1,
+      "ingredient": 2,
+      "quantity": "1.000",
+      "note": "основа"
+    }
+  },
+  {
+    "model": "crm.techcardvariant",
+    "pk": 1,
+    "fields": {
+      "tech_card": 1,
+      "quantity": "1.500",
+      "note": "Порция 1.5 кг"
+    }
+  },
+  {
+    "model": "crm.order",
+    "pk": 1,
+    "fields": {
+      "order_number": "ORD-0001",
+      "client": 1,
+      "manager": 1,
+      "address": "Москва, ул. Пряничная, 10",
+      "status": "confirmed",
+      "comments": "Доставить утром",
+      "total_amount": "3500.00",
+      "created_at": "2026-02-03T07:00:00Z",
+      "updated_at": "2026-02-03T07:30:00Z"
+    }
+  },
+  {
+    "model": "crm.orderitem",
+    "pk": 1,
+    "fields": {
+      "order": 1,
+      "dish": 1,
+      "ingredient": null,
+      "custom_tech_card": 1,
+      "quantity": "10.000",
+      "unit_price": "350.00",
+      "line_total": "3500.00",
+      "supply_type": "поставка блюд"
+    }
+  }
+]

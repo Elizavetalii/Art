@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}{{ entity.label }}{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/admin.html" %}{% endblock %}
+{% block topbar_title %}Админ‑панель: {{ entity.label }}{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/admin/">Кабинет администратора</a> /
+  <a href="/admin-panel/">Админ‑панель</a> /
+  <a href="/admin-panel/entities/{{ entity.slug }}/">{{ entity.label }}</a> /
+  Карточка
+{% endblock %}
+
+{% block content %}
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+    <div>
+      <h4 class="mb-1">{{ entity.label }}</h4>
+      <div class="text-muted">Карточка записи</div>
+    </div>
+    <div class="d-flex gap-2">
+      <a href="/admin-panel/entities/{{ entity.slug }}/{{ obj.pk }}/edit/" class="btn btn-outline-secondary">Редактировать</a>
+      <a href="/admin-panel/entities/{{ entity.slug }}/{{ obj.pk }}/delete/" class="btn btn-outline-danger">Удалить</a>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <h6 class="mb-3">Данные</h6>
+    <div class="row">
+      {% for field in fields %}
+        <div class="col-md-6 mb-3">
+          <div class="text-muted small">{{ field.label }}</div>
+          <div>{{ field.value }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% for inline in inline_sections %}
+    <div class="card mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h6 class="mb-0">{{ inline.label }}</h6>
+        <span class="text-muted small">Записей: {{ inline.count }}</span>
+      </div>
+      <div class="table-responsive">
+        <table class="table mb-0">
+          <thead>
+            <tr>
+              {% for header in inline.headers %}
+                <th>{{ header }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in inline.rows %}
+              <tr>
+                {% for cell in row %}
+                  <td>{{ cell }}</td>
+                {% endfor %}
+              </tr>
+            {% empty %}
+              <tr>
+                <td colspan="{{ inline.headers|length }}" class="text-muted">Связанные записи не найдены</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

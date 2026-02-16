@@ -1,0 +1,7 @@
+openapi: 3.0.3
+info:
+  title: Art Culinary CRM API
+  version: 1.0.0
+  description: REST API для продаж, заказов, логистики и техкарт.
+paths: {}
+components: {}

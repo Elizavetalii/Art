@@ -1,0 +1,335 @@
+{% extends "base.html" %}
+
+{% block title %}Аналитика{% endblock %}
+{% block sidebar %}
+  {% if is_admin %}
+    {% include "partials/sidebars/admin.html" %}
+  {% else %}
+    {% include "partials/sidebars/manager.html" %}
+  {% endif %}
+{% endblock %}
+{% block topbar_title %}Аналитика{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/manager/">Кабинет менеджера</a> / Аналитика
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Аналитика</h4>
+  </div>
+
+  <div class="card mb-3">
+    <form class="filters" method="get">
+      <input class="form-control" type="date" name="from" value="{{ request.GET.from }}">
+      <input class="form-control" type="date" name="to" value="{{ request.GET.to }}">
+      <select class="form-select" name="status">
+        <option value="">Все статусы</option>
+        {% for value, label in statuses %}
+          <option value="{{ value }}" {% if request.GET.status == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+      <select class="form-select" name="client">
+        <option value="">Все клиенты</option>
+        {% for c in clients %}
+          <option value="{{ c.id }}" {% if request.GET.client == c.id|stringformat:"s" %}selected{% endif %}>{{ c.name }}</option>
+        {% endfor %}
+      </select>
+      <button class="btn btn-outline-secondary" type="submit">Показать</button>
+      <a class="btn btn-primary" href="/reports/create/?from={{ request.GET.from }}&to={{ request.GET.to }}">Сформировать отчёт</a>
+    </form>
+  </div>
+
+  <div class="row g-3 mb-3">
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ total_orders }}</div>
+        <div class="kpi-label">Заказов за период</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ revenue }}</div>
+        <div class="kpi-label">Выручка</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ avg_check }}</div>
+        <div class="kpi-label">Средний чек</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <div class="section-header">
+      <h6 class="mb-0">Заказы по статусам</h6>
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-secondary btn-sm" id="download-status-chart">Скачать график</button>
+        <button class="btn btn-outline-secondary btn-sm" id="download-status-table">Скачать таблицу</button>
+      </div>
+    </div>
+    <canvas id="statusChart" height="120"></canvas>
+    <div class="table-responsive mt-3">
+      <table class="table mb-0" id="statusTable">
+        <thead>
+          <tr>
+            <th>Статус</th>
+            <th>Количество</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in by_status %}
+            <tr>
+              <td>{{ row.label }}</td>
+              <td>{{ row.cnt }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="2" class="text-muted">Нет данных</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-header">
+      <h6 class="mb-0">Динамика заказов</h6>
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-secondary btn-sm" id="download-orders-chart">Скачать график</button>
+        <button class="btn btn-outline-secondary btn-sm" id="download-orders-table">Скачать таблицу</button>
+      </div>
+    </div>
+    <canvas id="ordersChart" height="140"></canvas>
+    <div class="table-responsive mt-3">
+      <table class="table mb-0" id="ordersTable">
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Заказы</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in by_day %}
+            <tr>
+              <td>{{ row.day }}</td>
+              <td>{{ row.cnt }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="2" class="text-muted">Нет данных</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mt-3">
+    <div class="section-header">
+      <h6 class="mb-0">Динамика выручки</h6>
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-secondary btn-sm" id="download-revenue-chart">Скачать график</button>
+        <button class="btn btn-outline-secondary btn-sm" id="download-revenue-table">Скачать таблицу</button>
+      </div>
+    </div>
+    <canvas id="revenueChart" height="140"></canvas>
+    <div class="table-responsive mt-3">
+      <table class="table mb-0" id="revenueTable">
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Выручка</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in by_day %}
+            <tr>
+              <td>{{ row.day }}</td>
+              <td>{{ row.revenue }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="2" class="text-muted">Нет данных</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mt-3">
+    <div class="section-header">
+      <h6 class="mb-0">Средний чек по дням</h6>
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-secondary btn-sm" id="download-avg-chart">Скачать график</button>
+        <button class="btn btn-outline-secondary btn-sm" id="download-avg-table">Скачать таблицу</button>
+      </div>
+    </div>
+    <canvas id="avgChart" height="140"></canvas>
+    <div class="table-responsive mt-3">
+      <table class="table mb-0" id="avgTable">
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Средний чек</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in avg_check_by_day %}
+            <tr>
+              <td>{{ row.day }}</td>
+              <td>{{ row.avg_check }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="2" class="text-muted">Нет данных</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card mt-3">
+    <div class="section-header">
+      <h6 class="mb-0">Топ‑10 клиентов по выручке</h6>
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-secondary btn-sm" id="download-client-chart">Скачать график</button>
+        <button class="btn btn-outline-secondary btn-sm" id="download-client-table">Скачать таблицу</button>
+      </div>
+    </div>
+    <canvas id="clientChart" height="140"></canvas>
+    <div class="table-responsive mt-3">
+      <table class="table mb-0" id="clientTable">
+        <thead>
+          <tr>
+            <th>Клиент</th>
+            <th>Заказы</th>
+            <th>Выручка</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in by_client %}
+            <tr>
+              <td>{{ row.client }}</td>
+              <td>{{ row.cnt }}</td>
+              <td>{{ row.revenue }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="3" class="text-muted">Нет данных</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {{ by_status|json_script:"status-data" }}
+  {{ by_day|json_script:"day-data" }}
+  {{ avg_check_by_day|json_script:"avg-data" }}
+  {{ by_client|json_script:"client-data" }}
+  {{ by_client_type|json_script:"client-type-data" }}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script>
+    (function() {
+      const statusData = JSON.parse(document.getElementById("status-data").textContent || "[]");
+      const dayData = JSON.parse(document.getElementById("day-data").textContent || "[]");
+      const avgData = JSON.parse(document.getElementById("avg-data").textContent || "[]");
+      const clientData = JSON.parse(document.getElementById("client-data").textContent || "[]");
+      const clientTypeData = JSON.parse(document.getElementById("client-type-data").textContent || "[]");
+
+      const statusCtx = document.getElementById("statusChart").getContext("2d");
+      const statusChart = new Chart(statusCtx, {
+        type: "bar",
+        data: {
+          labels: statusData.map((r) => r.label),
+          datasets: [{
+            label: "Количество",
+            data: statusData.map((r) => r.cnt),
+            backgroundColor: "#3b82f6",
+          }],
+        },
+        options: { responsive: true },
+      });
+
+      const ordersCtx = document.getElementById("ordersChart").getContext("2d");
+      const ordersChart = new Chart(ordersCtx, {
+        type: "line",
+        data: {
+          labels: dayData.map((r) => r.day),
+          datasets: [
+            { label: "Заказы", data: dayData.map((r) => r.cnt), borderColor: "#3b82f6" },
+          ],
+        },
+        options: { responsive: true },
+      });
+
+      const revenueCtx = document.getElementById("revenueChart").getContext("2d");
+      const revenueChart = new Chart(revenueCtx, {
+        type: "line",
+        data: {
+          labels: dayData.map((r) => r.day),
+          datasets: [
+            { label: "Выручка", data: dayData.map((r) => r.revenue), borderColor: "#22c55e" },
+          ],
+        },
+        options: { responsive: true },
+      });
+
+      const avgCtx = document.getElementById("avgChart").getContext("2d");
+      const avgChart = new Chart(avgCtx, {
+        type: "line",
+        data: {
+          labels: avgData.map((r) => r.day),
+          datasets: [
+            { label: "Средний чек", data: avgData.map((r) => r.avg_check), borderColor: "#a855f7" },
+          ],
+        },
+        options: { responsive: true },
+      });
+
+      function downloadChart(chart, filename) {
+        const link = document.createElement("a");
+        link.href = chart.toBase64Image();
+        link.download = filename;
+        link.click();
+      }
+
+      function downloadTable(tableId, filename) {
+        const table = document.getElementById(tableId);
+        if (!table) return;
+        const rows = Array.from(table.querySelectorAll("tr"));
+        const csv = rows.map((row) => {
+          const cols = Array.from(row.querySelectorAll("th,td")).map((c) => `"${c.textContent.trim()}"`);
+          return cols.join(",");
+        }).join("\n");
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+      }
+
+      document.getElementById("download-status-chart").addEventListener("click", () => downloadChart(statusChart, "status-chart.png"));
+      document.getElementById("download-orders-chart").addEventListener("click", () => downloadChart(ordersChart, "orders-chart.png"));
+      document.getElementById("download-revenue-chart").addEventListener("click", () => downloadChart(revenueChart, "revenue-chart.png"));
+      document.getElementById("download-avg-chart").addEventListener("click", () => downloadChart(avgChart, "avg-chart.png"));
+      document.getElementById("download-status-table").addEventListener("click", () => downloadTable("statusTable", "status-table.csv"));
+      document.getElementById("download-orders-table").addEventListener("click", () => downloadTable("ordersTable", "orders-table.csv"));
+      document.getElementById("download-revenue-table").addEventListener("click", () => downloadTable("revenueTable", "revenue-table.csv"));
+      document.getElementById("download-avg-table").addEventListener("click", () => downloadTable("avgTable", "avg-table.csv"));
+
+      const clientEl = document.getElementById("clientChart");
+      if (clientEl) {
+        const clientCtx = clientEl.getContext("2d");
+        const clientChart = new Chart(clientCtx, {
+          type: "bar",
+          data: {
+            labels: clientData.map((r) => r.client),
+            datasets: [{
+              label: "Выручка",
+              data: clientData.map((r) => r.revenue),
+              backgroundColor: "#f97316",
+            }],
+          },
+          options: { responsive: true },
+        });
+        document.getElementById("download-client-chart").addEventListener("click", () => downloadChart(clientChart, "client-chart.png"));
+        document.getElementById("download-client-table").addEventListener("click", () => downloadTable("clientTable", "client-table.csv"));
+      }
+    })();
+  </script>
+{% endblock %}

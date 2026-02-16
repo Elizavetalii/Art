@@ -1,0 +1,27 @@
+{% extends "portal/base_portal.html" %}
+{% block title %}Клиенты{% endblock %}
+{% block content %}
+<h3 class="mb-3">Клиенты</h3>
+<form class="row g-2 mb-3" method="get">
+  <div class="col-md-4"><input name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Поиск"></div>
+  <div class="col-md-3"><input name="status" value="{{ request.GET.status }}" class="form-control" placeholder="Статус"></div>
+  <div class="col-md-2"><button class="btn btn-secondary w-100">Фильтр</button></div>
+  <div class="col-md-3 text-end"><a class="btn btn-primary" href="/manager/clients/create/">Добавить клиента</a></div>
+</form>
+<table class="table table-hover align-middle">
+  <thead><tr><th>Название</th><th>Статус</th><th>Этап</th><th>Ответственный</th><th></th></tr></thead>
+  <tbody>
+  {% for c in clients %}
+    <tr>
+      <td>{{ c.name }}</td>
+      <td>{{ c.status }}</td>
+      <td>{{ c.stage }}</td>
+      <td>{{ c.responsible|default:"—" }}</td>
+      <td class="text-end">
+        <a class="btn btn-sm btn-outline-primary" href="/manager/clients/{{ c.id }}/edit/">Редактировать</a>
+      </td>
+    </tr>
+  {% empty %}<tr><td colspan="5">Нет данных</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

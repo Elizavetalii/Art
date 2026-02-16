@@ -1,0 +1,30 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<div id="content-main" class="dashboard-full">
+  <div class="dashboard-grid">
+    {% for category, models in categorized_list %}
+      {% if models %}
+      <div class="dash-card">
+        <div class="dash-card__header">
+          <h2>{{ category }}</h2>
+        </div>
+        <div class="dash-card__body">
+          {% for model in models %}
+            <div class="dash-entry">
+              <div class="dash-entry__title">
+                <a href="{{ model.admin_url }}">{{ model.name }}</a>
+              </div>
+              <div class="dash-entry__actions">
+                {% if model.add_url %}<a class="pill pill--primary" href="{{ model.add_url }}">Добавить</a>{% endif %}
+                <a class="pill pill--ghost" href="{{ model.admin_url }}">Список</a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

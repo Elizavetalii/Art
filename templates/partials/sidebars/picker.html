@@ -1,0 +1,13 @@
+<div class="logo">
+  <i data-lucide="sparkles"></i>
+  <span>Art Culinary CRM</span>
+</div>
+<div class="menu">
+  <div class="menu-title">Производство</div>
+  <a href="/dashboard/picker/" class="{% if '/dashboard/picker/' in request.path %}active{% endif %}">
+    <i data-lucide="layout-grid"></i>Обзор
+  </a>
+  <a href="/orders/picker/" class="{% if '/orders/picker/' in request.path %}active{% endif %}">
+    <i data-lucide="clipboard-check"></i>Заказы в работе
+  </a>
+</div>

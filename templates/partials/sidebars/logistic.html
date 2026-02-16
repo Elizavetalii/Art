@@ -1,0 +1,22 @@
+<div class="logo">
+  <i data-lucide="sparkles"></i>
+  <span>Art Culinary CRM</span>
+</div>
+<div class="menu">
+  <div class="menu-title">Логистика</div>
+  <a href="/dashboard/logistic/" class="{% if '/dashboard/logistic/' in request.path %}active{% endif %}">
+    <i data-lucide="layout-grid"></i>Обзор
+  </a>
+  <a href="/logistics/" class="{% if request.path == '/logistics/' %}active{% endif %}">
+    <i data-lucide="truck"></i>Заказы на доставку
+  </a>
+  <a href="/logistics/routes/" class="{% if '/logistics/routes/' in request.path %}active{% endif %}">
+    <i data-lucide="route"></i>Маршруты
+  </a>
+  <a href="/logistics/couriers/" class="{% if '/logistics/couriers/' in request.path %}active{% endif %}">
+    <i data-lucide="user-check"></i>Курьеры
+  </a>
+  <a href="/logistics/profile/" class="{% if '/logistics/profile/' in request.path %}active{% endif %}">
+    <i data-lucide="settings"></i>Профиль логиста
+  </a>
+</div>

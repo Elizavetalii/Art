@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Отчёты{% endblock %}
+{% block sidebar %}
+  {% if is_admin %}
+    {% include "partials/sidebars/admin.html" %}
+  {% else %}
+    {% include "partials/sidebars/manager.html" %}
+  {% endif %}
+{% endblock %}
+{% block topbar_title %}Отчёты{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/manager/">Кабинет менеджера</a> / Отчёты / Список
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Отчёты</h4>
+    <div class="d-flex gap-2">
+      <a href="/reports/create/" class="btn btn-primary">Создать отчёт</a>
+      <a href="/reports/create/" class="btn btn-outline-secondary">Импортировать</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Название</th>
+            <th>Период</th>
+            <th>Статус</th>
+            <th>Проверка</th>
+            <th>Файл</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in reports %}
+            <tr>
+              <td>{{ r.title }}</td>
+              <td>{{ r.period_from|date:"d.m.Y" }} – {{ r.period_to|date:"d.m.Y" }}</td>
+              <td>
+                <span class="badge-soft {% if r.status == 'ready' %}success{% elif r.status == 'error' %}danger{% else %}warn{% endif %}">
+                  {{ r.get_status_display }}
+                </span>
+              </td>
+              <td>
+                <span class="badge-soft {% if r.validation_status == 'ok' %}success{% elif r.validation_status == 'warn' %}warn{% else %}danger{% endif %}">
+                  {{ r.get_validation_status_display }}
+                </span>
+                <div class="small text-muted">{{ r.validation_message|default:"—" }}</div>
+              </td>
+              <td>{% if r.file %}<a href="{{ r.file.url }}" class="text-decoration-none">Скачать</a>{% else %}—{% endif %}</td>
+              <td class="text-end">
+                <form method="post" action="/reports/{{ r.id }}/validate/" class="d-inline">
+                  {% csrf_token %}
+                  <button class="btn btn-sm btn-outline-secondary">Проверить</button>
+                </form>
+                <a class="btn btn-sm btn-outline-secondary" href="/reports/{{ r.id }}/edit/">Изменить</a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="6" class="text-muted">Отчётов нет</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

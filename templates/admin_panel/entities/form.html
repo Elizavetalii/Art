@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}{{ entity.label }}{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/admin.html" %}{% endblock %}
+{% block topbar_title %}Админ‑панель: {{ entity.label }}{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/admin/">Кабинет администратора</a> /
+  <a href="/admin-panel/">Админ‑панель</a> /
+  <a href="/admin-panel/entities/{{ entity.slug }}/">{{ entity.label }}</a> /
+  {% if is_edit %}Редактирование{% else %}Создание{% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+    <div>
+      <h4 class="mb-1">{{ entity.label }}</h4>
+      <div class="text-muted">
+        {% if is_edit %}Редактирование записи{% else %}Создание записи{% endif %}
+      </div>
+    </div>
+    <a href="/admin-panel/entities/{{ entity.slug }}/" class="btn btn-outline-secondary">Назад</a>
+  </div>
+
+  <div class="card">
+    <form method="post">
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+      {% endif %}
+      <div class="row">
+        {% for field in form %}
+          <div class="{% if field.field.widget.attrs.data-size == 'full' %}col-12{% else %}col-md-6{% endif %} mb-3">
+            <label class="form-label">{{ field.label }}</label>
+            {{ field }}
+            {% if field.help_text %}
+              <div class="form-text">{{ field.help_text }}</div>
+            {% endif %}
+            {% for error in field.errors %}
+              <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+        <a href="/admin-panel/entities/{{ entity.slug }}/" class="btn btn-outline-secondary">Отмена</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

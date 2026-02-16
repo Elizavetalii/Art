@@ -1,0 +1,20 @@
+{% extends "portal/base_portal.html" %}
+{% block title %}Кабинет логиста{% endblock %}
+{% block content %}
+<h3 class="mb-3">Кабинет логиста</h3>
+<table class="table table-hover">
+  <thead><tr><th>Заказ</th><th>Курьер</th><th>Отправление</th><th>Доставка</th><th>Адрес</th><th></th></tr></thead>
+  <tbody>
+    {% for d in deliveries %}
+    <tr>
+      <td>{{ d.order.order_number }}</td>
+      <td>{{ d.courier|default:"—" }}</td>
+      <td>{{ d.departure_time|default:"—" }}</td>
+      <td>{{ d.delivered_at|default:"—" }}</td>
+      <td>{{ d.address }}</td>
+      <td><a class="btn btn-sm btn-outline-primary" href="/logistic/delivery/{{ d.id }}/">Изменить</a></td>
+    </tr>
+    {% empty %}<tr><td colspan="6">Нет доставок</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

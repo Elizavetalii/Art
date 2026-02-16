@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Маршруты курьера{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/courier.html" %}{% endblock %}
+{% block topbar_title %}Маршруты курьера{% endblock %}
+{% block breadcrumbs %}
+  <a href="/logistics/courier/routes/">Курьер</a> / Маршруты
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Мои маршруты</h4>
+  </div>
+
+  <div class="card mb-3">
+    <form method="get" class="row g-2 align-items-end">
+      <div class="col-md-4">
+        <label class="form-label">Дата</label>
+        <input type="date" name="date" value="{{ request.GET.date }}" class="form-control">
+      </div>
+      <div class="col-md-4 d-flex gap-2">
+        <button class="btn btn-primary">Применить</button>
+        <a href="/logistics/courier/routes/" class="btn btn-outline-secondary">Сбросить</a>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Статус</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in routes %}
+            <tr>
+              <td>{{ r.planned_date|date:"d.m.Y" }}</td>
+              <td>{{ r.status }}</td>
+              <td class="text-end">
+                <a href="/logistics/courier/routes/{{ r.id }}/" class="btn btn-sm btn-outline-secondary">Открыть</a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="3" class="text-muted">Маршрутов нет</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

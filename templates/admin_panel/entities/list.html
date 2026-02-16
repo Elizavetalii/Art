@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}{{ entity.label }}{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/admin.html" %}{% endblock %}
+{% block topbar_title %}Админ‑панель: {{ entity.label }}{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/admin/">Кабинет администратора</a> /
+  <a href="/admin-panel/">Админ‑панель</a> /
+  {{ entity.label }}
+{% endblock %}
+
+{% block content %}
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+    <div>
+      <h4 class="mb-1">{{ entity.label }}</h4>
+      <div class="text-muted">Список записей с поиском и фильтрами</div>
+    </div>
+    <a href="/admin-panel/entities/{{ entity.slug }}/create/" class="btn btn-primary">Добавить</a>
+  </div>
+
+  <div class="card mb-3">
+    <form class="row g-2 align-items-end" method="get">
+      <div class="col-md-4">
+        <label class="form-label">Поиск</label>
+        <input type="text" name="q" class="form-control" value="{{ query }}" placeholder="Введите ключевые данные">
+      </div>
+      {% for f in filters %}
+        <div class="col-md-3">
+          <label class="form-label">{{ f.label }}</label>
+          <select name="{{ f.name }}" class="form-select">
+            <option value="">Все</option>
+            {% for opt in f.options %}
+              <option value="{{ opt.value }}" {% if opt.value|stringformat:"s" == f.value|stringformat:"s" %}selected{% endif %}>
+                {{ opt.label }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endfor %}
+      {% for d in date_filters %}
+        <div class="col-md-3">
+          <label class="form-label">{{ d.label }} с</label>
+          <input type="date" name="{{ d.name }}_from" value="{{ d.from }}" class="form-control">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">{{ d.label }} по</label>
+          <input type="date" name="{{ d.name }}_to" value="{{ d.to }}" class="form-control">
+        </div>
+      {% endfor %}
+      <div class="col-md-3">
+        <label class="form-label">Сортировка</label>
+        <select name="sort" class="form-select">
+          <option value="">По умолчанию</option>
+          {% for opt in sort_options %}
+            <option value="{{ opt.value }}" {% if opt.value == sort_field %}selected{% endif %}>{{ opt.label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Направление</label>
+        <select name="dir" class="form-select">
+          <option value="desc" {% if sort_dir == "desc" %}selected{% endif %}>По убыванию</option>
+          <option value="asc" {% if sort_dir == "asc" %}selected{% endif %}>По возрастанию</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-outline-secondary w-100" type="submit">Применить</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            {% for header in headers %}
+              <th>{{ header }}</th>
+            {% endfor %}
+            <th>Действия</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+            <tr>
+              {% for cell in row.cells %}
+                <td>{{ cell }}</td>
+              {% endfor %}
+              <td>
+                <div class="d-flex flex-wrap gap-2">
+                  <a class="btn btn-sm btn-outline-secondary" href="/admin-panel/entities/{{ entity.slug }}/{{ row.obj.pk }}/">Открыть</a>
+                  <a class="btn btn-sm btn-outline-secondary" href="/admin-panel/entities/{{ entity.slug }}/{{ row.obj.pk }}/edit/">Редактировать</a>
+                  <a class="btn btn-sm btn-outline-danger" href="/admin-panel/entities/{{ entity.slug }}/{{ row.obj.pk }}/delete/">Удалить</a>
+                </div>
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="{{ headers|length|add:'1' }}" class="text-muted">Записей не найдено</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {% if page_obj and paginator.num_pages > 1 %}
+    <nav class="mt-3">
+      <ul class="pagination">
+        <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+          {% if page_obj.has_previous %}
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query_string %}&{{ query_string }}{% endif %}">Назад</a>
+          {% else %}
+            <span class="page-link">Назад</span>
+          {% endif %}
+        </li>
+        {% for page in paginator.page_range %}
+          {% if page == page_obj.number %}
+            <li class="page-item active"><span class="page-link">{{ page }}</span></li>
+          {% elif page >= page_obj.number|add:"-2" and page <= page_obj.number|add:"2" %}
+            <li class="page-item"><a class="page-link" href="?page={{ page }}{% if query_string %}&{{ query_string }}{% endif %}">{{ page }}</a></li>
+          {% endif %}
+        {% endfor %}
+        <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+          {% if page_obj.has_next %}
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query_string %}&{{ query_string }}{% endif %}">Вперёд</a>
+          {% else %}
+            <span class="page-link">Вперёд</span>
+          {% endif %}
+        </li>
+      </ul>
+    </nav>
+  {% endif %}
+{% endblock %}

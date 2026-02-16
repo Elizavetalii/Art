@@ -1,0 +1,29 @@
+<div class="logo">
+  <i data-lucide="sparkles"></i>
+  <span>Art Culinary CRM</span>
+</div>
+<div class="menu">
+  <div class="menu-title">Рабочий стол</div>
+  <a href="/dashboard/manager/" class="{% if '/dashboard/manager/' in request.path %}active{% endif %}">
+    <i data-lucide="layout-grid"></i>Обзор
+  </a>
+  <div class="menu-title">Продажи</div>
+  <a href="/clients/" class="{% if '/clients/' in request.path %}active{% endif %}">
+    <i data-lucide="users"></i>Клиенты
+  </a>
+  <a href="/orders/" class="{% if request.path == '/orders/' %}active{% endif %}">
+    <i data-lucide="clipboard-list"></i>Заказы
+  </a>
+  <a href="/orders/archive/" class="{% if '/orders/archive/' in request.path %}active{% endif %}">
+    <i data-lucide="archive"></i>Архив заказов
+  </a>
+  <a href="/reports/analytics/" class="{% if '/reports/analytics/' in request.path %}active{% endif %}">
+    <i data-lucide="bar-chart-3"></i>Аналитика
+  </a>
+  <a href="/reports/" class="{% if '/reports/' in request.path and '/reports/analytics/' not in request.path %}active{% endif %}">
+    <i data-lucide="file-text"></i>Отчёты
+  </a>
+  <a href="/logistics/manager/proofs/" class="{% if '/logistics/manager/proofs/' in request.path %}active{% endif %}">
+    <i data-lucide="file-check-2"></i>Проверка доставок
+  </a>
+</div>

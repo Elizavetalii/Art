@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Проверка данных{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/admin.html" %}{% endblock %}
+{% block topbar_title %}Проверка данных{% endblock %}
+{% block breadcrumbs %}
+  <a href="/admin-panel/">Админ‑панель</a> / Проверка данных
+{% endblock %}
+
+{% block content %}
+  <div class="card mb-3">
+    <form method="post">
+      {% csrf_token %}
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-primary">Запустить проверки</button>
+        <span class="text-muted">Проверка связей и качества данных</span>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h6>Результаты</h6>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="card">
+          <h6>Ошибки</h6>
+          <ul class="list-group list-group-flush">
+            {% for e in report.errors %}
+              <li class="list-group-item">{{ e }}</li>
+            {% empty %}
+              <li class="list-group-item text-muted">Ошибок нет</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <h6>Предупреждения</h6>
+          <ul class="list-group list-group-flush">
+            {% for w in report.warnings %}
+              <li class="list-group-item">{{ w }}</li>
+            {% empty %}
+              <li class="list-group-item text-muted">Предупреждений нет</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

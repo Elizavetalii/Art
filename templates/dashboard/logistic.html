@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block title %}Панель логиста{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/logistic.html" %}{% endblock %}
+{% block topbar_title %}Панель логиста{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/logistic/">Кабинет логиста</a> / Обзор
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Обзор логистики</h4>
+    <a href="/logistics/" class="btn btn-primary">К доставкам</a>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.couriers_total }}</div>
+        <div class="kpi-label">Всего курьеров</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.couriers_free }}</div>
+        <div class="kpi-label">Свободные курьеры</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.active_cargo }}</div>
+        <div class="kpi-label">Активные грузы</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.deliveries }}</div>
+        <div class="kpi-label">Всего доставок</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.pending }}</div>
+        <div class="kpi-label">Ожидают отправки</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">Быстрый доступ</div>
+        <div class="d-flex gap-2 mt-2">
+          <a href="/logistics/couriers/" class="btn btn-outline-secondary btn-sm">Курьеры</a>
+          <a href="/logistics/routes/" class="btn btn-outline-secondary btn-sm">Маршруты</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="section-header">
+      <h6 class="mb-0">Быстрая фильтрация курьеров</h6>
+      <a href="/logistics/couriers/" class="link-muted">Открыть список</a>
+    </div>
+    <div class="d-flex flex-wrap gap-2">
+      <a href="/logistics/couriers/?status=Свободен" class="btn btn-outline-secondary btn-sm">Свободные</a>
+      <a href="/logistics/couriers/?status=Занят" class="btn btn-outline-secondary btn-sm">Занятые</a>
+      <a href="/logistics/couriers/?status=В%20рейсе" class="btn btn-outline-secondary btn-sm">В рейсе</a>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-lg-4">
+      <div class="card">
+        <h6>Активные маршруты</h6>
+        <ul class="list-group list-group-flush">
+          {% for r in routes_payload %}
+            <li class="list-group-item bg-transparent">
+              <div class="fw-semibold">{{ r.title }}</div>
+              <div class="small text-muted">{{ r.status }}</div>
+              <button class="btn btn-sm btn-outline-secondary mt-2" data-route-id="{{ r.id }}">Показать на карте</button>
+            </li>
+          {% empty %}
+            <li class="list-group-item text-muted bg-transparent">Активных маршрутов нет</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card">
+        <h6>Карта активных маршрутов</h6>
+        <div id="logistic-map" style="height: 360px;"></div>
+        <div class="mt-2">
+          <a id="open-in-maps" class="link-muted" href="#" target="_blank" rel="noopener">Открыть в Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-header">
+      <h6 class="mb-0">Последние доставки</h6>
+      <a href="/logistics/" class="link-muted">Открыть список</a>
+    </div>
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Заказ</th>
+            <th>Адрес</th>
+            <th>Статус</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for d in recent_deliveries %}
+            <tr>
+              <td>{{ d.order.order_number }}</td>
+              <td>{{ d.address|default:"—" }}</td>
+              <td>{{ d.is_sent|yesno:"Отправлен,Ожидает" }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="3" class="text-muted">Нет данных</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {{ routes_payload|json_script:"routes-data" }}
+  <script>
+    async function geocodeAddress(address) {
+      const url = "https://nominatim.openstreetmap.org/search?format=json&q=" + encodeURIComponent(address);
+      const res = await fetch(url, { headers: { "Accept-Language": "ru" } });
+      const data = await res.json();
+      if (!data.length) return null;
+      return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+    }
+
+    function buildGoogleMapsLink(points) {
+      const addresses = points.map((p) => p.address).filter(Boolean);
+      if (addresses.length < 2) return "#";
+      const origin = encodeURIComponent(addresses[0]);
+      const destination = encodeURIComponent(addresses[addresses.length - 1]);
+      const waypoints = addresses.slice(1, -1).map(encodeURIComponent).join("|");
+      let url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}`;
+      if (waypoints) url += `&waypoints=${waypoints}`;
+      return url;
+    }
+
+    async function initLogisticMap() {
+      const data = JSON.parse(document.getElementById("routes-data").textContent || "[]");
+      const mapEl = document.getElementById("logistic-map");
+      if (!mapEl) return;
+      const map = L.map(mapEl);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap",
+      }).addTo(map);
+
+      let polyline = null;
+      let markers = [];
+
+      async function renderRoute(route) {
+        const points = [];
+        for (const stop of route.stops || []) {
+          let point = null;
+          if (stop.lat && stop.lng) {
+            point = { lat: stop.lat, lng: stop.lng, address: stop.address };
+          } else if (stop.address) {
+            const geo = await geocodeAddress(stop.address);
+            if (geo) point = { ...geo, address: stop.address };
+          }
+          if (point) points.push(point);
+        }
+
+        markers.forEach((m) => map.removeLayer(m));
+        markers = [];
+        if (polyline) map.removeLayer(polyline);
+
+        if (points.length) {
+          const latLngs = points.map((p) => [p.lat, p.lng]);
+          polyline = L.polyline(latLngs, { color: "#3b82f6" }).addTo(map);
+          markers = points.map((p) => L.marker([p.lat, p.lng]).addTo(map).bindPopup(p.address || "Точка"));
+          map.fitBounds(latLngs, { padding: [30, 30] });
+        } else {
+          map.setView([55.751244, 37.618423], 10);
+        }
+
+        const link = document.getElementById("open-in-maps");
+        if (link) link.href = buildGoogleMapsLink(route.stops || []);
+      }
+
+      const firstRoute = data[0];
+      if (firstRoute) await renderRoute(firstRoute);
+
+      document.querySelectorAll("[data-route-id]").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          const route = data.find((r) => String(r.id) === btn.dataset.routeId);
+          if (route) await renderRoute(route);
+        });
+      });
+    }
+  </script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>initLogisticMap();</script>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Заказы{% endblock %}
+{% block sidebar %}
+  {% if is_admin %}
+    {% include "partials/sidebars/admin.html" %}
+  {% else %}
+    {% include "partials/sidebars/manager.html" %}
+  {% endif %}
+{% endblock %}
+{% block topbar_title %}Заказы{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/manager/">Кабинет менеджера</a> / Заказы / Список
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Заказы</h4>
+    <a href="/orders/create/" class="btn btn-primary">Создать заказ</a>
+  </div>
+
+  <div class="card mb-3">
+    <form class="filters" method="get">
+      <input class="form-control" type="text" name="q" value="{{ request.GET.q }}" placeholder="Поиск по номеру">
+      <select class="form-select" name="client">
+        <option value="">Все клиенты</option>
+        {% for c in clients %}
+          <option value="{{ c.id }}" {% if request.GET.client == c.id|stringformat:"s" %}selected{% endif %}>{{ c.name }}</option>
+        {% endfor %}
+      </select>
+      <select class="form-select" name="status">
+        <option value="">Все статусы</option>
+        {% for value, label in statuses %}
+          <option value="{{ value }}" {% if request.GET.status == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+      <input class="form-control" type="date" name="from" value="{{ request.GET.from }}">
+      <input class="form-control" type="date" name="to" value="{{ request.GET.to }}">
+      <select class="form-select" name="sort">
+        <option value="">Сортировка</option>
+        <option value="created_at" {% if request.GET.sort == "created_at" %}selected{% endif %}>По дате ↑</option>
+        <option value="-created_at" {% if request.GET.sort == "-created_at" %}selected{% endif %}>По дате ↓</option>
+        <option value="order_number" {% if request.GET.sort == "order_number" %}selected{% endif %}>По номеру ↑</option>
+        <option value="-order_number" {% if request.GET.sort == "-order_number" %}selected{% endif %}>По номеру ↓</option>
+      </select>
+      <button class="btn btn-outline-secondary" type="submit">Фильтр</button>
+      <a href="/orders/archive/" class="btn btn-outline-secondary">Архив</a>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Номер</th>
+            <th>Клиент</th>
+            <th>Статус</th>
+            <th>Сумма</th>
+            <th>Дата</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for o in orders %}
+            <tr>
+              <td>{{ o.order_number }}</td>
+              <td>{{ o.client.name }}</td>
+              <td>
+                <span class="badge-soft {% if o.status == 'Отменен' %}danger{% elif o.status == 'Отгружен' %}success{% elif o.status == 'Подтвержден производством' %}primary{% else %}warn{% endif %}">
+                  {{ o.status }}
+                </span>
+              </td>
+              <td>{{ o.total_amount }}</td>
+              <td>{{ o.created_at|date:"d.m.Y" }}</td>
+              <td class="text-end">
+                <a class="btn btn-sm btn-outline-secondary" href="/orders/{{ o.id }}/edit/">Изменить</a>
+                <form method="post" action="/orders/{{ o.id }}/archive-toggle/" class="d-inline">
+                  {% csrf_token %}
+                  <button class="btn btn-sm btn-outline-secondary">В архив</button>
+                </form>
+                <a class="btn btn-sm btn-outline-danger" href="/orders/{{ o.id }}/delete/">Удалить</a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="6" class="text-muted">Нет заказов</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

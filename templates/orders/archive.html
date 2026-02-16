@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Архив заказов{% endblock %}
+{% block sidebar %}
+  {% if is_admin %}
+    {% include "partials/sidebars/admin.html" %}
+  {% else %}
+    {% include "partials/sidebars/manager.html" %}
+  {% endif %}
+{% endblock %}
+{% block topbar_title %}Архив заказов{% endblock %}
+{% block breadcrumbs %}
+  <a href="/orders/">Заказы</a> / Архив
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Архив заказов</h4>
+    <a href="/orders/" class="btn btn-outline-secondary">К активным</a>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Номер</th>
+            <th>Клиент</th>
+            <th>Статус</th>
+            <th>Сумма</th>
+            <th>Дата</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for o in orders %}
+            <tr>
+              <td>{{ o.order_number }}</td>
+              <td>{{ o.client.name }}</td>
+              <td>
+                <span class="badge-soft {% if o.status == 'Отменен' %}danger{% elif o.status == 'Отгружен' %}success{% elif o.status == 'Подтвержден производством' %}primary{% else %}warn{% endif %}">
+                  {{ o.status }}
+                </span>
+              </td>
+              <td>{{ o.total_amount }}</td>
+              <td>{{ o.created_at|date:"d.m.Y" }}</td>
+              <td class="text-end">
+                <form method="post" action="/orders/{{ o.id }}/archive-toggle/" class="d-inline">
+                  {% csrf_token %}
+                  <button class="btn btn-sm btn-outline-secondary">Восстановить</button>
+                </form>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="6" class="text-muted">Архив пуст</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Проверка доставок{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/manager.html" %}{% endblock %}
+{% block topbar_title %}Проверка доставок{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/manager/">Кабинет менеджера</a> / Проверка доставок
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Документы доставки</h4>
+  </div>
+
+  <div class="card mb-3">
+    <form method="get" class="row g-2 align-items-end">
+      <div class="col-md-4">
+        <label class="form-label">Статус проверки</label>
+        <select name="status" class="form-select">
+          <option value="">Все</option>
+          <option value="Ожидает проверки" {% if request.GET.status == 'Ожидает проверки' %}selected{% endif %}>Ожидает проверки</option>
+          <option value="Подтверждено" {% if request.GET.status == 'Подтверждено' %}selected{% endif %}>Подтверждено</option>
+          <option value="Отклонено" {% if request.GET.status == 'Отклонено' %}selected{% endif %}>Отклонено</option>
+        </select>
+      </div>
+      <div class="col-md-4 d-flex gap-2">
+        <button class="btn btn-primary">Применить</button>
+        <a href="/logistics/manager/proofs/" class="btn btn-outline-secondary">Сбросить</a>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Маршрут</th>
+            <th>Заказ</th>
+            <th>Адрес</th>
+            <th>Статус</th>
+            <th>Документ</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in stops %}
+            <tr>
+              <td>{{ s.route.planned_date|date:"d.m.Y" }}</td>
+              <td>{{ s.delivery.order.order_number }}</td>
+              <td>{{ s.delivery.address|default:s.delivery.order.address|default:"—" }}</td>
+              <td>{{ s.proof_review_status }}</td>
+              <td>
+                {% if s.proof_of_delivery %}
+                  <a href="{{ s.proof_of_delivery.url }}" target="_blank">Открыть</a>
+                {% else %}
+                  —
+                {% endif %}
+              </td>
+              <td class="text-end">
+                <form method="post" action="/logistics/manager/proofs/{{ s.id }}/" class="d-inline">
+                  {% csrf_token %}
+                  <input type="hidden" name="action" value="approve">
+                  <button class="btn btn-sm btn-outline-secondary">Подтвердить</button>
+                </form>
+                <form method="post" action="/logistics/manager/proofs/{{ s.id }}/" class="d-inline">
+                  {% csrf_token %}
+                  <input type="hidden" name="action" value="reject">
+                  <input type="hidden" name="comment" value="Отклонено менеджером">
+                  <button class="btn btn-sm btn-outline-secondary">Отклонить</button>
+                </form>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="6" class="text-muted">Документов нет</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заказы — Панель менеджера</title>
+  <link rel="stylesheet" href="{% static 'manager.css' %}">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">AC</div>
+      <nav class="menu">
+        <a class="menu-item" href="/manager/clients/">Клиенты</a>
+        <a class="menu-item active" href="/manager/orders/">Заказы</a>
+        <a class="menu-item" href="/manager/">Главная</a>
+      </nav>
+    </aside>
+    <main class="content">
+      <header class="topbar">
+        <div class="breadcrumb">Заказы</div>
+        <div class="userbox">
+          <span class="user-name">{{ request.user.full_name|default:request.user.username }}</span>
+          <a class="logout" href="/logout/">Выйти</a>
+        </div>
+      </header>
+
+      <section class="card">
+        <div class="card-head">
+          <div><h2>Список заказов</h2><p class="muted">Создание, изменение статусов</p></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Номер</th><th>Клиент</th><th>Статус</th><th>Сумма</th></tr></thead>
+            <tbody>
+              {% for o in orders %}
+              <tr>
+                <td>{{ o.order_number }}</td>
+                <td>{{ o.client }}</td>
+                <td>{{ o.get_status_display }}</td>
+                <td>{{ o.total_amount }}</td>
+              </tr>
+              {% empty %}
+              <tr><td colspan="4">Нет заказов</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head"><h2>Создать заказ</h2></div>
+        <form method="post" class="form-grid">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button class="btn primary" type="submit">Сохранить</button>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

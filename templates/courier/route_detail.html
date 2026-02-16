@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Маршрут курьера{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/courier.html" %}{% endblock %}
+{% block topbar_title %}Маршрут{% endblock %}
+{% block breadcrumbs %}
+  <a href="/logistics/courier/routes/">Курьер</a> / Маршрут
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Маршрут на {{ route.planned_date|date:"d.m.Y" }}</h4>
+    <a href="/logistics/courier/routes/" class="btn btn-outline-secondary">Назад</a>
+  </div>
+
+  <div class="card mb-3">
+    <div class="section-header">
+      <h6 class="mb-0">Навигация</h6>
+      <a id="open-route-maps" class="btn btn-outline-secondary" href="#" target="_blank" rel="noopener">Открыть в Google Maps</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Порядок</th>
+            <th>Адрес</th>
+            <th>План</th>
+            <th>Вес/Объём</th>
+            <th>Статус</th>
+            <th>Проверка</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in stops %}
+            <tr>
+              <td>{{ s.sequence_index }}</td>
+              <td>{{ s.delivery.address|default:s.delivery.order.address|default:"—" }}</td>
+              <td>{{ s.planned_time|date:"d.m.Y H:i"|default:"—" }}</td>
+              <td>{{ s.delivery.cargo_weight_kg|default:"—" }} / {{ s.delivery.cargo_volume_m3|default:"—" }}</td>
+              <td>{{ s.status }}</td>
+              <td>{{ s.proof_review_status }}</td>
+              <td class="text-end">
+                <form method="post" action="/logistics/courier/stops/{{ s.id }}/update/" class="d-inline">
+                  {% csrf_token %}
+                  <input type="hidden" name="status" value="В пути">
+                  <button class="btn btn-sm btn-outline-secondary">В пути</button>
+                </form>
+                <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#done-{{ s.id }}">Доставлено</button>
+                <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#fail-{{ s.id }}">Не доставлено</button>
+              </td>
+            </tr>
+            <tr class="collapse" id="done-{{ s.id }}">
+              <td colspan="6">
+                <form method="post" action="/logistics/courier/stops/{{ s.id }}/proof/" enctype="multipart/form-data" class="row g-2">
+                  {% csrf_token %}
+                  <div class="col-md-6">
+                    <label class="form-label">Документ доставки (PDF/JPG/PNG)</label>
+                    <input type="file" name="proof_of_delivery" class="form-control" required>
+                  </div>
+                  <div class="col-md-6 d-flex align-items-end gap-2">
+                    <input type="hidden" name="status" value="Доставлено">
+                    <button class="btn btn-primary">Загрузить и завершить</button>
+                    {% if s.proof_of_delivery %}
+                      <a class="btn btn-outline-secondary" href="{{ s.proof_of_delivery.url }}" target="_blank">Просмотр</a>
+                    {% endif %}
+                  </div>
+                </form>
+              </td>
+            </tr>
+            <tr class="collapse" id="fail-{{ s.id }}">
+              <td colspan="6">
+                <form method="post" action="/logistics/courier/stops/{{ s.id }}/update/" class="row g-2">
+                  {% csrf_token %}
+                  <input type="hidden" name="status" value="Не доставлено">
+                  <div class="col-md-6">
+                    <label class="form-label">Причина</label>
+                    <input type="text" name="failure_reason" class="form-control" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Комментарий</label>
+                    <input type="text" name="note" class="form-control">
+                  </div>
+                  <div class="col-md-12">
+                    <button class="btn btn-primary">Подтвердить</button>
+                  </div>
+                </form>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="6" class="text-muted">Остановок нет</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const addresses = [];
+      {% for s in stops %}
+        {% if s.delivery.address or s.delivery.order.address %}
+          addresses.push("{{ s.delivery.address|default:s.delivery.order.address|escapejs }}");
+        {% endif %}
+      {% endfor %}
+      if (addresses.length >= 2) {
+        const origin = encodeURIComponent(addresses[0]);
+        const destination = encodeURIComponent(addresses[addresses.length - 1]);
+        const waypoints = addresses.slice(1, -1).map(encodeURIComponent).join("|");
+        let url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}`;
+        if (waypoints) url += `&waypoints=${waypoints}`;
+        const link = document.getElementById("open-route-maps");
+        if (link) link.href = url;
+      }
+    })();
+  </script>
+{% endblock %}

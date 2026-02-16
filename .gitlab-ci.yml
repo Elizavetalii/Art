@@ -1,0 +1,89 @@
+image: python:3.11
+
+stages:
+  - build
+  - lint
+  - api
+  - security
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  DJANGO_SETTINGS_MODULE: "factory_crm.settings"
+  DJANGO_SECRET_KEY: "ci-temp-secret"
+  DJANGO_DEBUG: "true"
+
+cache:
+  key: "pip-$CI_COMMIT_REF_SLUG"
+  paths:
+    - .cache/pip/
+
+before_script:
+  - echo "Обновляю pip и устанавливаю зависимости"
+  - python -m pip install --upgrade pip
+  - pip install -r requirements.txt
+
+build:check:
+  stage: build
+  script:
+    - echo "Проверяю корректность конфигурации Django"
+    - python manage.py check
+
+build:collectstatic:
+  stage: build
+  script:
+    - echo "Собираю статические файлы"
+    - python manage.py collectstatic --noinput
+  artifacts:
+    when: always
+    paths:
+      - staticfiles/
+
+lint:ruff:
+  stage: lint
+  script:
+    - echo "Запускаю линтер Ruff"
+    - pip install ruff
+    - mkdir -p reports
+    - ruff check . --output-format=json > reports/ruff.json
+  artifacts:
+    when: always
+    paths:
+      - reports/ruff.json
+  allow_failure: true
+
+api:schema:
+  stage: api
+  script:
+    - echo "Генерирую OpenAPI схему"
+    - mkdir -p artifacts
+    - python manage.py spectacular --file artifacts/openapi.yaml
+  artifacts:
+    when: always
+    paths:
+      - artifacts/openapi.yaml
+
+security:bandit:
+  stage: security
+  script:
+    - echo "Запускаю анализ безопасности Bandit"
+    - pip install bandit
+    - mkdir -p reports
+    - bandit -r . -f json -o reports/bandit.json
+  artifacts:
+    when: always
+    paths:
+      - reports/bandit.json
+  allow_failure: true
+
+security:pip-audit:
+  stage: security
+  script:
+    - echo "Проверяю зависимости на известные уязвимости"
+    - pip install pip-audit
+    - mkdir -p reports
+    - pip-audit -r requirements.txt -f json -o reports/pip-audit.json
+  artifacts:
+    when: always
+    paths:
+      - reports/pip-audit.json
+  allow_failure: true

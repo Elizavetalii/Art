@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Админ-панель{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/admin.html" %}{% endblock %}
+{% block topbar_title %}Административная панель{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/admin/">Кабинет администратора</a> / Админ‑панель
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Админ‑панель</h4>
+  </div>
+
+  <div class="row g-3 mb-3">
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.users }}</div>
+        <div class="kpi-label">Пользователей</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.roles }}</div>
+        <div class="kpi-label">Ролей</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.backups }}</div>
+        <div class="kpi-label">Резервных копий</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+      <h6 class="mb-0">Сущности и быстрый поиск</h6>
+      <form id="entity-search" class="d-flex gap-2" method="get" data-base="/admin-panel/entities/">
+        <select name="entity" class="form-select" style="min-width: 220px;">
+          {% for e in entities %}
+            <option value="{{ e.slug }}">{{ e.label }}</option>
+          {% endfor %}
+        </select>
+        <input type="text" name="q" class="form-control" placeholder="Быстрый поиск">
+        <button class="btn btn-primary" type="submit">Найти</button>
+      </form>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+      {% for e in entities %}
+        <div class="col">
+          <a class="card text-decoration-none h-100" href="/admin-panel/entities/{{ e.slug }}/">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <div class="fw-semibold">{{ e.label }}</div>
+                <div class="text-muted small">Записей: {{ e.count }}</div>
+              </div>
+              <span class="status-pill">Открыть</span>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    const searchForm = document.getElementById("entity-search");
+    if (searchForm) {
+      searchForm.addEventListener("submit", (e) => {
+        const slug = searchForm.entity.value;
+        searchForm.action = `${searchForm.dataset.base}${slug}/`;
+      });
+    }
+  </script>
+{% endblock %}

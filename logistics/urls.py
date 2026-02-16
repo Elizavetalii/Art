@@ -1,0 +1,38 @@
+from django.urls import path
+from .views import (
+    deliveries_list,
+    delivery_edit,
+    delivery_by_order,
+    delivery_card,
+    couriers_list,
+    routes_list,
+    route_create,
+    route_edit,
+    route_detail,
+    logistic_profile,
+    courier_routes,
+    courier_route_detail,
+    courier_stop_update,
+    courier_upload_proof,
+    proof_review_list,
+    proof_review_update,
+)
+
+urlpatterns = [
+    path("", deliveries_list, name="logistics-list"),
+    path("delivery/<int:pk>/", delivery_card, name="logistics-delivery-card"),
+    path("delivery/<int:pk>/edit/", delivery_edit, name="logistics-edit"),
+    path("orders/<int:order_id>/delivery/", delivery_by_order, name="logistics-delivery-by-order"),
+    path("couriers/", couriers_list, name="logistics-couriers"),
+    path("routes/", routes_list, name="logistics-routes"),
+    path("routes/create/", route_create, name="logistics-route-create"),
+    path("routes/<int:pk>/edit/", route_edit, name="logistics-route-edit"),
+    path("routes/<int:pk>/", route_detail, name="logistics-route-detail"),
+    path("profile/", logistic_profile, name="logistics-profile"),
+    path("courier/routes/", courier_routes, name="courier-routes"),
+    path("courier/routes/<int:pk>/", courier_route_detail, name="courier-route-detail"),
+    path("courier/stops/<int:pk>/update/", courier_stop_update, name="courier-stop-update"),
+    path("courier/stops/<int:pk>/proof/", courier_upload_proof, name="courier-stop-proof"),
+    path("manager/proofs/", proof_review_list, name="manager-proof-list"),
+    path("manager/proofs/<int:pk>/", proof_review_update, name="manager-proof-update"),
+]

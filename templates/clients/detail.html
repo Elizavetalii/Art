@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}Карточка клиента{% endblock %}
+{% block sidebar %}
+  {% if is_admin %}
+    {% include "partials/sidebars/admin.html" %}
+  {% else %}
+    {% include "partials/sidebars/manager.html" %}
+  {% endif %}
+{% endblock %}
+{% block topbar_title %}Карточка клиента{% endblock %}
+{% block breadcrumbs %}
+  <a href="/clients/">Клиенты</a> / Карточка
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">{{ client.name }}</h4>
+    <div class="d-flex gap-2">
+      <a href="/clients/{{ client.id }}/edit/" class="btn btn-outline-secondary">Редактировать</a>
+      <a href="/clients/" class="btn btn-outline-secondary">К списку</a>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-3">
+    <div class="col-lg-8">
+      <div class="card">
+        <h6>Основная информация</h6>
+        <div class="row g-3 mt-1">
+          <div class="col-md-6"><strong>Тип:</strong> {{ client.get_client_type_display }}</div>
+          <div class="col-md-6"><strong>Статус:</strong> {{ client.get_status_display }}</div>
+          <div class="col-md-6"><strong>Этап:</strong> {{ client.current_stage.name|default:"—" }}</div>
+          <div class="col-md-6"><strong>Менеджер:</strong> {{ client.responsible_manager.full_name|default:"—" }}</div>
+          <div class="col-md-6"><strong>Телефон:</strong> {{ client.phone|default:"—" }}</div>
+          <div class="col-md-6"><strong>Email:</strong> {{ client.email|default:"—" }}</div>
+          <div class="col-12"><strong>Адрес доставки:</strong> {{ client.default_delivery_address|default:"—" }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <h6>Смена этапа</h6>
+        <form method="post">
+          {% csrf_token %}
+          <input type="hidden" name="action" value="change_stage">
+          <div class="mb-2">
+            {{ stage_form.stage }}
+            {% if stage_form.stage.errors %}<div class="text-danger small">{{ stage_form.stage.errors|striptags }}</div>{% endif %}
+          </div>
+          <div class="mb-2">
+            {{ stage_form.comment }}
+          </div>
+          <button class="btn btn-primary w-100">Обновить этап</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <ul class="nav nav-tabs mb-3" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-interactions" type="button">Взаимодействия</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-orders" type="button">Заказы клиента</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-history" type="button">История этапов</button>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="tab-interactions">
+      <div class="card">
+        <div class="section-header">
+          <h6 class="mb-0">Журнал взаимодействий</h6>
+        </div>
+        <form method="post" class="mb-3">
+          {% csrf_token %}
+          <input type="hidden" name="action" value="add_interaction">
+          <div class="row g-2">
+            <div class="col-md-4">{{ interaction_form.interaction_type }}</div>
+            <div class="col-md-4">{{ interaction_form.happened_at }}</div>
+            <div class="col-md-12">{{ interaction_form.note }}</div>
+          </div>
+          <button class="btn btn-outline-secondary mt-2">Добавить запись</button>
+        </form>
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <thead>
+              <tr>
+                <th>Тип</th>
+                <th>Комментарий</th>
+                <th>Дата/время</th>
+                <th>Менеджер</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in interactions %}
+                <tr>
+                  <td>{{ i.get_interaction_type_display }}</td>
+                  <td>{{ i.note|default:"—" }}</td>
+                  <td>{{ i.happened_at|date:"d.m.Y H:i" }}</td>
+                  <td>{{ i.manager.full_name|default:"—" }}</td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="4" class="text-muted">Записей нет</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab-orders">
+      <div class="card">
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <thead>
+              <tr>
+                <th>Номер</th>
+                <th>Сумма</th>
+                <th>Статус</th>
+                <th>Дата</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for o in client_orders %}
+                <tr>
+                  <td>{{ o.order_number }}</td>
+                  <td>{{ o.total_amount }}</td>
+                  <td>{{ o.get_status_display }}</td>
+                  <td>{{ o.created_at|date:"d.m.Y" }}</td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="4" class="text-muted">Заказов нет</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab-history">
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          {% for h in stage_history %}
+            <li class="list-group-item bg-transparent">
+              <div class="fw-semibold">{{ h.stage.name|default:"—" }}</div>
+              <div class="text-muted small">{{ h.changed_at|date:"d.m.Y H:i" }}</div>
+              <div class="small">{{ h.comment|default:"" }}</div>
+            </li>
+          {% empty %}
+            <li class="list-group-item text-muted bg-transparent">История пуста</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM — Панель менеджера</title>
+  <link rel="stylesheet" href="{% static 'manager.css' %}">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo">AC</div>
+      <nav class="menu">
+        <a class="menu-item active" href="#clients">Клиенты</a>
+        <a class="menu-item" href="#orders">Заказы</a>
+        <a class="menu-item" href="#analytics">Аналитика</a>
+        <a class="menu-item" href="#reports">Отчёты</a>
+        <a class="menu-item" href="#archive">Архив заказов</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div class="breadcrumb">Панель менеджера</div>
+        <div class="userbox">
+          <span class="user-name">Менеджер</span>
+          <a class="logout" href="/admin/logout/">Выйти</a>
+        </div>
+      </header>
+
+      <section id="clients" class="card">
+        <div class="card-head">
+          <div>
+            <h2>Клиенты</h2>
+            <p class="muted">Поиск, фильтры, этапы сотрудничества</p>
+          </div>
+          <div class="actions">
+            <input type="search" class="input" placeholder="Поиск клиента">
+            <select class="input">
+              <option>Все статусы</option>
+              <option>Активен</option>
+              <option>Переговоры</option>
+              <option>Приостановлен</option>
+            </select>
+            <select class="input">
+              <option>Все этапы</option>
+              <option>Переговоры</option>
+              <option>Тестовый заказ</option>
+              <option>Регулярные поставки</option>
+            </select>
+            <a class="btn primary" href="/admin/crm/client/add/" target="_blank">Добавить клиента</a>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ФИО / Компания</th><th>Статус</th><th>Этап</th><th>Контакты</th><th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ирина Покупатель (Магазин «ВкусМаркет»)</td>
+                <td><span class="badge success">Активен</span></td>
+                <td>Регулярные поставки</td>
+                <td>+7 903 111-22-33 · irina@vkusmarket.ru</td>
+                <td class="row-actions">
+                  <button class="link">Карточка</button>
+                  <button class="link">Редактировать</button>
+                  <button class="link danger">Удалить</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Анна Бариста (Кафе «Брусника»)</td>
+                <td><span class="badge warning">Переговоры</span></td>
+                <td>Тестовый заказ</td>
+                <td>+7 913 111-22-11 · anna@brusnika.cafe</td>
+                <td class="row-actions">
+                  <button class="link">Карточка</button>
+                  <button class="link">Редактировать</button>
+                  <button class="link danger">Удалить</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="orders" class="card">
+        <div class="card-head">
+          <div>
+            <h2>Заказы</h2>
+            <p class="muted">Создание, статусы, привязка к клиенту</p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="/admin/crm/order/add/" target="_blank">Создать заказ</a>
+            <a class="btn ghost" href="#archive">Архив заказов</a>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Номер</th><th>Клиент</th><th>Статус</th><th>Сумма</th><th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ORD-1003</td>
+                <td>Маркет «Фреш»</td>
+                <td><span class="badge success">Подтвержден</span></td>
+                <td>7 850 ₽</td>
+                <td class="row-actions"><button class="link">Редактировать</button></td>
+              </tr>
+              <tr>
+                <td>ORD-1002</td>
+                <td>Ресторан «Невский»</td>
+                <td><span class="badge info">В производстве</span></td>
+                <td>2 560 ₽</td>
+                <td class="row-actions"><button class="link">Редактировать</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="analytics" class="card grid-2">
+        <div class="card-head">
+          <div>
+            <h2>Аналитика</h2>
+            <p class="muted">Ключевые показатели</p>
+          </div>
+          <div class="actions">
+            <input type="date" class="input">
+            <input type="date" class="input">
+            <button class="btn ghost" type="button">Фильтр</button>
+          </div>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="kpi-title">Заказы (неделя)</div>
+            <div class="kpi-value">42</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-title">Конверсия</div>
+            <div class="kpi-value">31%</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-title">Выручка</div>
+            <div class="kpi-value">1 240 000 ₽</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-title">Средний чек</div>
+            <div class="kpi-value">29 500 ₽</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reports" class="card">
+        <div class="card-head">
+          <div>
+            <h2>Отчёты</h2>
+            <p class="muted">Формирование и проверка данных</p>
+          </div>
+          <div class="actions">
+            <button class="btn primary" type="button">Создать отчёт</button>
+            <button class="btn ghost" type="button">Импорт</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Название</th><th>Период</th><th>Статус</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>Отчёт по выручке</td><td>Январь 2026</td><td><span class="badge info">Готов</span></td><td><button class="link">Открыть</button></td></tr>
+              <tr><td>Отчёт по логистике</td><td>Январь 2026</td><td><span class="badge warning">Требует проверки</span></td><td><button class="link">Проверить</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="archive" class="card">
+        <div class="card-head">
+          <div>
+            <h2>Архив заказов</h2>
+            <p class="muted">Завершённые и отменённые заказы</p>
+          </div>
+          <div class="actions">
+            <input type="search" class="input" placeholder="Поиск по номеру">
+            <button class="btn ghost" type="button">Фильтр</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Номер</th><th>Клиент</th><th>Статус</th><th>Сумма</th></tr></thead>
+            <tbody>
+              <tr><td>ORD-0098</td><td>Магазин «ВкусМаркет»</td><td><span class="badge danger">Отменён</span></td><td>0 ₽</td></tr>
+              <tr><td>ORD-0087</td><td>Кафе «Брусника»</td><td><span class="badge neutral">Архив</span></td><td>4 200 ₽</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

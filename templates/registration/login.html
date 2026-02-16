@@ -1,0 +1,39 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block title %}Вход в CRM{% endblock %}
+
+{% block content %}
+<div class="login-hero light-login">
+  <div class="login-card clean">
+    <div class="login-header clean">
+      <div class="login-logo clean">AC</div>
+      <div class="login-titles clean">
+        <h1>Art Culinary CRM</h1>
+        <p class="login-subtitle">Авторизация в системе</p>
+      </div>
+    </div>
+    <form action="{% url 'admin:login' %}" method="post" id="login-form">
+      {% csrf_token %}
+      {% if form.errors %}
+        <p class="errornote">Пожалуйста, исправьте ошибки ниже.</p>
+      {% endif %}
+      <div class="form-row">
+        <label for="id_username">Электронная почта</label>
+        {{ form.username }}
+      </div>
+      <div class="form-row">
+        <label for="id_password">Пароль</label>
+        {{ form.password }}
+      </div>
+      <div class="form-actions stacked">
+        <button type="submit" class="button default button-wide">Войти</button>
+        <a class="link-muted" href="#">Забыли пароль?</a>
+      </div>
+      {% if form.non_field_errors %}
+        {{ form.non_field_errors }}
+      {% endif %}
+    </form>
+  </div>
+</div>
+{% endblock %}

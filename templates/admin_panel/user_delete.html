@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Удаление пользователя{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/admin.html" %}{% endblock %}
+{% block topbar_title %}Удаление пользователя{% endblock %}
+{% block breadcrumbs %}
+  <a href="/admin-panel/users/">Пользователи</a> / Удаление
+{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h5>Удалить пользователя «{{ object.username }}»?</h5>
+    <p class="text-muted">Действие нельзя отменить.</p>
+    <form method="post">
+      {% csrf_token %}
+      <button class="btn btn-danger">Удалить</button>
+      <a href="/admin-panel/users/" class="btn btn-outline-secondary">Отмена</a>
+    </form>
+  </div>
+{% endblock %}

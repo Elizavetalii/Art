@@ -1,0 +1,38 @@
+<div class="logo">
+  <i data-lucide="sparkles"></i>
+  <span>Art Culinary CRM</span>
+</div>
+<div class="menu">
+  <div class="menu-title">Система</div>
+  <a href="/dashboard/admin/" class="{% if '/dashboard/admin/' in request.path %}active{% endif %}">
+    <i data-lucide="layout-grid"></i>Обзор
+  </a>
+  <a href="/admin-panel/" class="{% if request.path == '/admin-panel/' %}active{% endif %}">
+    <i data-lucide="settings"></i>Админ‑панель
+  </a>
+  <a href="/admin-panel/" class="{% if '/admin-panel/entities/' in request.path %}active{% endif %}">
+    <i data-lucide="table-2"></i>Сущности
+  </a>
+  <a href="/admin-panel/users/" class="{% if '/admin-panel/users/' in request.path %}active{% endif %}">
+    <i data-lucide="users"></i>Пользователи
+  </a>
+  <a href="/admin-panel/roles/" class="{% if '/admin-panel/roles/' in request.path %}active{% endif %}">
+    <i data-lucide="shield"></i>Роли
+  </a>
+  <a href="/admin-panel/access/" class="{% if '/admin-panel/access/' in request.path %}active{% endif %}">
+    <i data-lucide="lock"></i>Роли и доступы
+  </a>
+  <a href="/admin-panel/data-check/" class="{% if '/admin-panel/data-check/' in request.path %}active{% endif %}">
+    <i data-lucide="check-square"></i>Проверка данных
+  </a>
+  <a href="/admin-panel/backups/" class="{% if '/admin-panel/backups/' in request.path %}active{% endif %}">
+    <i data-lucide="database-backup"></i>Резервные копии
+  </a>
+  <div class="menu-title">Данные</div>
+  <a href="/clients/" class="{% if '/clients/' in request.path %}active{% endif %}">
+    <i data-lucide="users"></i>Клиенты
+  </a>
+  <a href="/orders/" class="{% if request.path == '/orders/' %}active{% endif %}">
+    <i data-lucide="clipboard-list"></i>Заказы
+  </a>
+</div>

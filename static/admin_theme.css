@@ -1,0 +1,575 @@
+/* Modern dark-blue admin theme for Art Culinary CRM */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
+
+:root {
+  /* базовая палитра: FFFFFF, 0059FF, 041A53, 030923, 000000 */
+  --bg: #030923;
+  --bg-2: #041a53;
+  --panel: #041a53;
+  --panel-2: #030923;
+  --border: #000000;
+  --card: #041a53;
+  --card-hover: #0059ff1a;
+  --accent: #0059ff;
+  --accent-2: #0059ff;
+  --success: #0059ff;
+  --warning: #0059ff;
+  --danger: #0059ff;
+  --text: #ffffff;
+  --muted: #9fb1d9;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --radius: 14px;
+  --field-bg: #f8fbff;
+  --field-border: #d5ddf5;
+  --field-text: #0b1021;
+}
+
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-2: #ffffff;
+  --panel: #ffffff;
+  --panel-2: #ffffff;
+  --border: #e5e7eb;
+  --card: #ffffff;
+  --card-hover: #f8fafc;
+  --accent: #0059ff;
+  --accent-2: #0059ff;
+  --success: #0059ff;
+  --warning: #0059ff;
+  --danger: #0059ff;
+  --text: #000000;
+  --muted: #041a53;
+  --shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  --field-bg: #f8fbff;
+  --field-border: #d5ddf5;
+  --field-text: #0b1021;
+}
+
+body, #container {
+  position: relative;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 89, 255, 0.22), transparent 35%),
+    radial-gradient(circle at 80% 0%, rgba(4, 26, 83, 0.25), transparent 35%),
+    linear-gradient(135deg, #030923 0%, #041a53 45%, #030923 100%);
+  color: var(--text);
+  font-family: 'Manrope', 'Inter', 'Segoe UI', sans-serif;
+}
+
+[data-theme="light"] body,
+[data-theme="light"] #container {
+  background:
+    linear-gradient(180deg, #ffffff 0%, #ffffff 100%),
+    radial-gradient(circle at 85% 15%, rgba(0, 89, 255, 0.10), transparent 32%),
+    radial-gradient(circle at 12% 85%, rgba(4, 26, 83, 0.08), transparent 28%);
+}
+#header {
+  background: linear-gradient(90deg, var(--bg-2), #000000);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+[data-theme=\"light\"] #header {
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+#branding h1, #branding h1 a {
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+#user-tools, #user-tools a { color: var(--muted); }
+#user-tools, #user-tools a { color: var(--text) !important; }
+
+a:link, a:visited { color: var(--accent); }
+a:hover { color: var(--accent-2); }
+
+.breadcrumbs,
+.breadcrumbs a { color: var(--text); }
+
+/* Навигация/сайдбар — только палитра синих и серых */
+#nav-sidebar {
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+}
+
+#nav-sidebar a,
+#nav-sidebar caption,
+#nav-sidebar th {
+  color: #041a53 !important;
+}
+
+#nav-sidebar .current-model,
+#nav-sidebar .current-app {
+  background: rgba(0, 89, 255, 0.08);
+  border-left: 3px solid #0059ff;
+}
+
+.module, .dashboard .module table {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.module h2, .module caption {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.button, .button.default, input[type=submit], input[type=submit].default {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  border: none;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 9px 16px;
+  box-shadow: 0 10px 24px rgba(0, 89, 255, 0.35);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+[data-theme="light"] .button,
+[data-theme="light"] .button.default,
+[data-theme="light"] input[type=submit],
+[data-theme="light"] input[type=submit].default {
+  color: #0b1021;
+  box-shadow: 0 10px 24px rgba(0, 89, 255, 0.2);
+}
+
+.button:hover, .button.default:hover,
+input[type=submit]:hover, input[type=submit].default:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(0, 194, 255, 0.35);
+}
+
+table#result_list {
+  background: transparent;
+}
+
+table#result_list thead th {
+  background: var(--panel-2);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] table#result_list th,
+[data-theme="dark"] table#result_list td,
+[data-theme="dark"] table#result_list a {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] table#result_list thead th {
+  background: #f1f5ff;
+  color: #041a53;
+  border-color: #e5e7eb;
+}
+
+table#result_list tbody tr:nth-child(even) { background: rgba(255,255,255,0.012); }
+table#result_list tbody tr:hover { background: rgba(0, 89, 255, 0.08); }
+
+fieldset, .aligned, .inline-group {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+[data-theme="light"] fieldset,
+[data-theme="light"] .aligned,
+[data-theme="light"] .inline-group {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+input, select, textarea {
+  background: var(--field-bg);
+  border: 1px solid var(--field-border);
+  color: var(--field-text);
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+[data-theme="light"] input,
+[data-theme="light"] select,
+[data-theme="light"] textarea {
+  background: var(--field-bg);
+  border: 1px solid var(--field-border);
+  color: var(--field-text);
+}
+
+/* Усиленные стили, чтобы в светлой теме не появлялся тёмный фон/градиент */
+select,
+[data-theme="light"] select {
+  background-color: var(--field-bg) !important;
+  border-color: var(--field-border) !important;
+  color: var(--field-text) !important;
+  box-shadow: none !important;
+}
+
+textarea,
+[data-theme="light"] textarea {
+  background-color: var(--field-bg) !important;
+  border-color: var(--field-border) !important;
+  color: var(--field-text) !important;
+  box-shadow: none !important;
+}
+
+.related-widget-wrapper select,
+[data-theme="light"] .related-widget-wrapper select {
+  background-color: var(--field-bg) !important;
+  border-color: var(--field-border) !important;
+  color: var(--field-text) !important;
+}
+
+.vTextField, .vLargeTextField,
+[data-theme="light"] .vTextField, [data-theme="light"] .vLargeTextField {
+  background-color: var(--field-bg) !important;
+  border-color: var(--field-border) !important;
+  color: var(--field-text) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0, 89, 255, 0.35);
+}
+
+.object-tools a {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  color: var(--text);
+  border: none;
+  border-radius: 10px;
+}
+
+.dashboard .module {
+  padding: 0.4rem 0.8rem 0.8rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  width: 100%;
+  align-items: start;
+}
+
+.dash-card {
+  background: linear-gradient(160deg, rgba(0, 89, 255, 0.18), rgba(3, 9, 35, 0.7)),
+              var(--panel);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+
+[data-theme="light"] .dash-card {
+  background: var(--panel);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.dash-card__header h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+
+.dash-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dash-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+[data-theme="light"] .dash-entry {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.dash-entry:last-child { border-bottom: none; }
+
+.dash-entry__title a {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.dash-entry__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-weight: 600;
+  font-size: 12px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.pill--primary {
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  box-shadow: 0 8px 18px rgba(0, 89, 255, 0.3);
+}
+
+.pill--ghost {
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+[data-theme="light"] .pill,
+[data-theme="light"] .pill a {
+  color: #0b1021 !important;
+}
+
+[data-theme="light"] .pill--ghost {
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.08);
+  color: #0b1021 !important;
+}
+
+/* Текстовые элементы явно следуют теме */
+h1, h2, h3, h4, h5, h6,
+label, legend, th, td,
+p, li, a {
+  color: var(--text);
+}
+
+[data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3,
+[data-theme="light"] h4, [data-theme="light"] h5, [data-theme="light"] h6,
+[data-theme="light"] label, [data-theme="light"] legend,
+[data-theme="light"] th, [data-theme="light"] td,
+[data-theme="light"] p, [data-theme="light"] li, [data-theme="light"] a {
+  color: var(--text);
+}
+
+/* В тёмной теме весь текст — белый принудительно */
+[data-theme="dark"] *, [data-theme="dark"] *::placeholder {
+  color: #ffffff !important;
+  border-color: inherit;
+}
+
+/* В светлой теме возвращаем placeholder к тёмному */
+[data-theme="light"] *::placeholder {
+  color: #4b5563;
+}
+
+/* Скрыть стандартную кнопку смены темы Django (оставляем свою) */
+button[aria-label="Toggle theme"]:not(#theme-toggle),
+.theme-toggle:not(#theme-toggle) {
+  display: none !important;
+}
+
+.grp-object-tools a, .grp-add-handler, .grp-remove-handler {
+  background: var(--accent);
+  color: #fff;
+}
+
+.errornote, .errorlist li { background: rgba(244, 63, 94, 0.15); border-color: var(--danger); color: #ffcbd7; }
+.success { background: rgba(22, 196, 127, 0.18); color: #b6f3d8; }
+.warning { background: rgba(251, 191, 36, 0.16); color: #fde8b2; }
+
+/* Ошибки и валидация в синей гамме */
+.errornote, .errorlist li {
+  background: rgba(0, 89, 255, 0.12);
+  border-color: #0059ff;
+  color: #041a53;
+}
+
+.errorlist li a { color: #0059ff; }
+
+.form-row.errors,
+.errors {
+  background: rgba(0, 89, 255, 0.06);
+  border-color: #0059ff !important;
+}
+
+.form-row.errors input,
+.form-row.errors select,
+.form-row.errors textarea,
+.errors input,
+.errors select,
+.errors textarea {
+  background: #f0f6ff !important;
+  border-color: #0059ff !important;
+  color: #0b1021 !important;
+  box-shadow: none !important;
+}
+
+.dashboard-full {
+  width: 100%;
+  max-width: none;
+  padding-right: 0;
+}
+
+#content {
+  margin: 0 auto;
+  width: 100%;
+  padding: 24px;
+  max-width: none;
+}
+
+.theme-toggle {
+  margin-left: 12px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+.theme-toggle:hover { background: rgba(255,255,255,0.14); transform: translateY(-1px); }
+
+[data-theme=\"light\"] .theme-toggle {
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.08);
+}
+
+.theme-toggle__icon {
+  font-size: 16px;
+  letter-spacing: 4px;
+}
+
+/* Quickbar */
+.admin-quickbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+}
+
+.nav-filter-input {
+  background: var(--field-bg);
+  border: 1px solid var(--field-border);
+  color: var(--field-text);
+  border-radius: 10px;
+  padding: 6px 10px;
+  min-width: 240px;
+}
+
+.nav-filter-wrap {
+  padding: 10px 12px 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Login page */
+.login-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #f7f8fa;
+}
+
+.login-card {
+  width: min(420px, 90vw);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 28px 26px;
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.12);
+  position: relative;
+  z-index: 1;
+}
+
+.login-card h1 {
+  margin: 0 0 6px;
+}
+
+.login-subtitle {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.login-card .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.login-card label {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.login-card input[type=\"text\"], .login-card input[type=\"password\"] {
+  background: #ffffff;
+  border: 1px solid #d5d9e0;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.login-card input[type=\"text\"]:focus,
+.login-card input[type=\"password\"]:focus {
+  border-color: #1e5cf5;
+  box-shadow: 0 0 0 3px rgba(30, 92, 245, 0.18);
+}
+
+.login-card .form-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: stretch;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.remember-row {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 8px;
+}
+
+.button-wide {
+  width: 100%;
+  text-align: center;
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.login-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1e5cf5, #113a8f);
+  color: #ffffff;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 24px rgba(30, 92, 245, 0.35);
+}
+
+.login-blob {
+  position: absolute;
+  inset: -20% -10% auto auto;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle at 30% 30%, rgba(0,89,255,0.28), transparent 40%),
+              radial-gradient(circle at 70% 60%, rgba(0,89,255,0.18), transparent 35%);
+  filter: blur(36px);
+  opacity: 0.8;
+}

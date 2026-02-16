@@ -1,0 +1,78 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  {# cache-busting query param to avoid stale CSS in browsers #}
+  <link rel="stylesheet" href="{% static 'admin_theme.css' %}?v=20260202">
+{% endblock %}
+
+{% block nav-global %}
+  <div class="admin-quickbar">
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Сменить тему">
+      <span class="theme-toggle__icon">☾</span>
+    </button>
+  </div>
+{% endblock %}
+
+{% block extrafooter %}
+  {{ block.super }}
+  <script>
+    (function() {
+      const STORAGE_KEY = 'factory_admin_theme';
+      const root = document.documentElement;
+      const btn = document.getElementById('theme-toggle');
+
+      // Удаляем возможные дубликаты кнопки темы
+      document.querySelectorAll('.theme-toggle').forEach(el => {
+        if (el.id !== 'theme-toggle') el.remove();
+      });
+
+      const setTheme = (theme) => {
+        const target = theme === 'light' ? 'light' : 'dark';
+        root.classList.remove('light', 'dark');
+        root.classList.add(target);
+        root.setAttribute('data-theme', target);
+        localStorage.setItem(STORAGE_KEY, target);
+        if (btn) btn.querySelector('.theme-toggle__icon').textContent = target === 'light' ? '☀︎' : '☾';
+      };
+
+      const saved = localStorage.getItem(STORAGE_KEY);
+      let current = saved === 'light' ? 'light' : 'dark';
+      setTheme(current); // принудительно только dark/light
+
+      if (btn) {
+        btn.addEventListener('click', () => {
+          current = current === 'dark' ? 'light' : 'dark';
+          setTheme(current);
+        });
+      }
+
+      // Фильтр по пунктам меню — инъекция поля в сайдбар
+      const navSidebar = document.getElementById('nav-sidebar');
+      if (navSidebar) {
+        const filterWrap = document.createElement('div');
+        filterWrap.className = 'nav-filter-wrap';
+        const filterInput = document.createElement('input');
+        filterInput.type = 'search';
+        filterInput.id = 'nav-filter';
+        filterInput.className = 'nav-filter-input';
+        filterInput.placeholder = 'Фильтр меню...';
+        filterInput.setAttribute('aria-label', 'Фильтр меню');
+        filterWrap.appendChild(filterInput);
+        navSidebar.prepend(filterWrap);
+
+        const items = Array.from(navSidebar.querySelectorAll('a'));
+        filterInput.addEventListener('input', (e) => {
+          const q = e.target.value.toLowerCase();
+          items.forEach((link) => {
+            const text = link.textContent.toLowerCase();
+            const row = link.closest('tr, li, div, dd');
+            if (!row) return;
+            row.style.display = (!q || text.includes(q)) ? '' : 'none';
+          });
+        });
+      }
+    })();
+  </script>
+{% endblock %}

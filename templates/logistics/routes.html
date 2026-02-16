@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Маршруты{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/logistic.html" %}{% endblock %}
+{% block topbar_title %}Маршруты{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/logistic/">Кабинет логиста</a> / Маршруты
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Маршруты</h4>
+    <a href="/logistics/routes/create/" class="btn btn-primary">Новый маршрут</a>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Логист</th>
+            <th>Статус</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in routes %}
+            <tr>
+              <td>{{ r.planned_date|date:"d.m.Y" }}</td>
+              <td>{{ r.logistician.full_name|default:"—" }}</td>
+              <td>{{ r.get_status_display }}</td>
+              <td class="text-end">
+                <a href="/logistics/routes/{{ r.id }}/" class="btn btn-sm btn-outline-secondary">Открыть</a>
+                <a href="/logistics/routes/{{ r.id }}/edit/" class="btn btn-sm btn-outline-secondary">Изменить</a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="4" class="text-muted">Маршруты не найдены</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

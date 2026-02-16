@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Роли{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/admin.html" %}{% endblock %}
+{% block topbar_title %}Роли{% endblock %}
+{% block breadcrumbs %}
+  <a href="/admin-panel/">Админ‑панель</a> / Роли
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Роли</h4>
+    <a href="/admin-panel/roles/create/" class="btn btn-primary">Создать роль</a>
+  </div>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Название</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in roles %}
+            <tr>
+              <td>{{ r.name }}</td>
+            </tr>
+          {% empty %}
+            <tr><td class="text-muted">Ролей нет</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

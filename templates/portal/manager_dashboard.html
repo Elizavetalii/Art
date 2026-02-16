@@ -1,0 +1,28 @@
+{% extends "portal/base_portal.html" %}
+{% block title %}Панель менеджера{% endblock %}
+{% block content %}
+<div class="row g-3 mb-3">
+  <div class="col-md-4">
+    <div class="card shadow-sm"><div class="card-body">
+      <div class="text-muted">Клиенты</div>
+      <div class="fs-3 fw-bold">{{ stats.clients }}</div>
+    </div></div>
+  </div>
+  <div class="col-md-4">
+    <div class="card shadow-sm"><div class="card-body">
+      <div class="text-muted">Заказы</div>
+      <div class="fs-3 fw-bold">{{ stats.orders }}</div>
+    </div></div>
+  </div>
+  <div class="col-md-4">
+    <div class="card shadow-sm"><div class="card-body">
+      <div class="text-muted">Активные</div>
+      <div class="fs-3 fw-bold">{{ stats.active_orders }}</div>
+    </div></div>
+  </div>
+</div>
+<div class="d-flex gap-2">
+  <a class="btn btn-primary" href="/manager/clients/">Клиенты</a>
+  <a class="btn btn-outline-primary" href="/manager/orders/">Заказы</a>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход в Art Culinary CRM</title>
+  <link rel="stylesheet" href="{% static 'login_root.css' %}">
+</head>
+<body>
+  <div class="root-login">
+    <div class="login-card">
+      <div class="logo">AC</div>
+      <h1>Art Culinary CRM</h1>
+      <p class="subtitle">Авторизация в системе</p>
+      <form method="post" action="{% url 'root-login' %}">
+        {% csrf_token %}
+        {% if form.errors %}
+          <p class="errornote">Пожалуйста, введите корректные данные или войдите под учётной записью с ролью менеджера.</p>
+        {% endif %}
+        <label for="id_username">Электронная почта</label>
+        <input type="text" id="id_username" name="username" autocomplete="username" required>
+
+        <label for="id_password">Пароль</label>
+        <input type="password" id="id_password" name="password" autocomplete="current-password" required>
+
+        <button type="submit" class="btn primary">Войти</button>
+        <a class="link" href="#">Забыли пароль?</a>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

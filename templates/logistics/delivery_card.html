@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}Карточка доставки{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/logistic.html" %}{% endblock %}
+{% block topbar_title %}Карточка доставки{% endblock %}
+{% block breadcrumbs %}
+  <a href="/logistics/">Заказы на доставку</a> / Карточка
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <div>
+      <h4 class="mb-1">Доставка по заказу №{{ delivery.order.order_number }}</h4>
+      <span class="badge-soft {% if delivery.status == 'Доставлено' %}success{% elif delivery.status == 'Отменено' %}danger{% elif delivery.status == 'В пути' %}primary{% else %}warn{% endif %}">
+        {{ delivery.status }}
+      </span>
+    </div>
+    <a href="/logistics/" class="btn btn-outline-secondary">К списку</a>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-lg-4">
+      <div class="card">
+        <h6>Данные заказа</h6>
+        <div class="small text-muted">Клиент</div>
+        <div class="fw-semibold mb-2">{{ delivery.order.client.name }}</div>
+        <div class="small text-muted">Адрес</div>
+        <div class="mb-2">{{ delivery.address|default:delivery.order.address|default:"—" }}</div>
+        <div class="small text-muted">Сумма</div>
+        <div class="fw-semibold">{{ delivery.order.total_amount }}</div>
+      </div>
+      <div class="card mt-3">
+        <h6>Параметры груза</h6>
+        <div class="small text-muted">Вес (кг)</div>
+        <div class="fw-semibold mb-2">{{ delivery.cargo_weight_kg|default:"—" }}</div>
+        <div class="small text-muted">Объём (м³)</div>
+        <div class="fw-semibold mb-2">{{ delivery.cargo_volume_m3|default:"—" }}</div>
+        <div class="small text-muted">Габариты (см)</div>
+        <div class="fw-semibold">{{ delivery.cargo_length_cm|default:"—" }}×{{ delivery.cargo_width_cm|default:"—" }}×{{ delivery.cargo_height_cm|default:"—" }}</div>
+      </div>
+      <div class="card mt-3">
+        <h6>Подходящие курьеры</h6>
+        <ul class="list-group list-group-flush">
+          {% for c in suitable_couriers %}
+            <li class="list-group-item bg-transparent">
+              {{ c.user.full_name }} · {{ c.transport_type|default:"—" }} · {{ c.payload_capacity_kg|default:"—" }} кг
+            </li>
+          {% empty %}
+            <li class="list-group-item text-muted bg-transparent">Нет подходящих курьеров</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card">
+        <h6>Планирование доставки</h6>
+        <form method="post" novalidate>
+          {% csrf_token %}
+          <div class="row g-3">
+            {% for field in form %}
+              <div class="col-md-6">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                  <div class="text-danger small mt-1">{{ field.errors|striptags }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+          <div class="d-flex gap-2 mt-4">
+            <button class="btn btn-primary">Сохранить</button>
+            <a href="/logistics/" class="btn btn-outline-secondary">Отмена</a>
+          </div>
+        </form>
+      </div>
+      <div class="card mt-3">
+        <h6>Маршрут и карта</h6>
+        <div id="delivery-map" style="height: 320px;"></div>
+        <div class="d-flex gap-3 mt-2 small text-muted">
+          <div>Расстояние: <span id="route-distance">—</span></div>
+          <div>Время: <span id="route-duration">—</span></div>
+          <div>Альтернативы: <span id="route-alternatives">—</span></div>
+        </div>
+        <div class="mt-2">
+          <a id="open-delivery-maps" class="link-muted" href="#" target="_blank" rel="noopener">Открыть в Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{ delivery_map_payload|json_script:"delivery-map-data" }}
+  <script>
+    async function geocodeAddress(address) {
+      const url = "https://nominatim.openstreetmap.org/search?format=json&q=" + encodeURIComponent(address);
+      const res = await fetch(url, { headers: { "Accept-Language": "ru" } });
+      const data = await res.json();
+      if (!data.length) return null;
+      return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+    }
+
+    function buildGoogleMapsLink(origin, destination) {
+      if (!origin || !destination) return "#";
+      const o = encodeURIComponent(origin);
+      const d = encodeURIComponent(destination);
+      return `https://www.google.com/maps/dir/?api=1&origin=${o}&destination=${d}`;
+    }
+
+    async function initDeliveryMap() {
+      const payload = JSON.parse(document.getElementById("delivery-map-data").textContent || "{}");
+      const mapEl = document.getElementById("delivery-map");
+      if (!mapEl) return;
+      const map = L.map(mapEl);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap",
+      }).addTo(map);
+
+      if (!payload.origin || !payload.destination) {
+        map.setView([55.751244, 37.618423], 10);
+        return;
+      }
+
+      const originPoint = await geocodeAddress(payload.origin);
+      const destPoint = await geocodeAddress(payload.destination);
+      if (originPoint && destPoint) {
+        const latLngs = [
+          [originPoint.lat, originPoint.lng],
+          [destPoint.lat, destPoint.lng],
+        ];
+        L.marker([originPoint.lat, originPoint.lng]).addTo(map).bindPopup(payload.origin);
+        L.marker([destPoint.lat, destPoint.lng]).addTo(map).bindPopup(payload.destination);
+        L.polyline(latLngs, { color: "#3b82f6" }).addTo(map);
+        map.fitBounds(latLngs, { padding: [30, 30] });
+      } else {
+        map.setView([55.751244, 37.618423], 10);
+      }
+
+      const link = document.getElementById("open-delivery-maps");
+      if (link) link.href = buildGoogleMapsLink(payload.origin, payload.destination);
+    }
+  </script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>initDeliveryMap();</script>
+{% endblock %}

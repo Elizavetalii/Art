@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Панель сборщика{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/picker.html" %}{% endblock %}
+{% block topbar_title %}Панель сборщика заказов{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/picker/">Кабинет сборщика</a> / Обзор
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Обзор производства</h4>
+    <a href="/orders/picker/" class="btn btn-primary">К заказам</a>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-md-6">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.orders }}</div>
+        <div class="kpi-label">Всего заказов</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.in_progress }}</div>
+        <div class="kpi-label">В производстве</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-header">
+      <h6 class="mb-0">Последние заказы</h6>
+      <a href="/orders/picker/" class="link-muted">Открыть список</a>
+    </div>
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Номер</th>
+            <th>Клиент</th>
+            <th>Статус</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for o in recent_orders %}
+            <tr>
+              <td>{{ o.order_number }}</td>
+              <td>{{ o.client.name }}</td>
+              <td>{{ o.get_status_display }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="3" class="text-muted">Нет данных</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

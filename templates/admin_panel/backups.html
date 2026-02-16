@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Резервные копии{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/admin.html" %}{% endblock %}
+{% block topbar_title %}Резервные копии{% endblock %}
+{% block breadcrumbs %}
+  <a href="/admin-panel/">Админ‑панель</a> / Резервные копии
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Резервные копии</h4>
+    <div class="d-flex gap-2">
+      <a href="/admin-panel/backups/create/" class="btn btn-primary">Создать бэкап</a>
+      <a href="/admin-panel/backups/schedule/" class="btn btn-outline-secondary">Расписание</a>
+    </div>
+  </div>
+
+  {% if schedule %}
+    <div class="card mb-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <div class="fw-semibold">Автобэкапы</div>
+          <div class="text-muted small">{{ schedule.get_frequency_display }} · {{ schedule.is_active|yesno:"включено,выключено" }}</div>
+        </div>
+        <a href="/admin-panel/backups/schedule/" class="btn btn-outline-secondary btn-sm">Изменить</a>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Файл</th>
+            <th>Размер</th>
+            <th>Статус</th>
+            <th>Создан</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in backups %}
+            {% with b=item.obj %}
+            <tr>
+              <td>{{ b.file_path }}</td>
+              <td>{{ item.size }} байт</td>
+              <td>{{ b.get_status_display }}</td>
+              <td>{{ b.created_at|date:"d.m.Y H:i" }}</td>
+              <td class="text-end">
+                <form method="post" action="/admin-panel/backups/{{ b.id }}/restore/" class="d-inline">
+                  {% csrf_token %}
+                  <button class="btn btn-sm btn-outline-secondary">Восстановить</button>
+                </form>
+              </td>
+            </tr>
+            {% endwith %}
+          {% empty %}
+            <tr><td colspan="5" class="text-muted">Бэкапов нет</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

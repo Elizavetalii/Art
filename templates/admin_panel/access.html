@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Роли и доступы{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/admin.html" %}{% endblock %}
+{% block topbar_title %}Роли и доступы{% endblock %}
+{% block breadcrumbs %}
+  <a href="/admin-panel/">Админ‑панель</a> / Роли и доступы
+{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h6>Матрица доступа</h6>
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead>
+          <tr>
+            <th>Раздел</th>
+            {% for r in roles %}
+              <th>{{ r.name }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+            <tr>
+              <td><a href="{{ row.url }}" class="text-decoration-none">{{ row.name }}</a></td>
+              {% for r in roles %}
+                <td>
+                  {% if r.name in row.allowed %}
+                    ✅
+                  {% else %}
+                    —
+                  {% endif %}
+                </td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

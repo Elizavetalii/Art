@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Панель администратора{% endblock %}
+{% block sidebar %}{% include "partials/sidebars/admin.html" %}{% endblock %}
+{% block topbar_title %}Панель администратора системы{% endblock %}
+{% block breadcrumbs %}
+  <a href="/dashboard/admin/">Кабинет администратора</a> / Обзор
+{% endblock %}
+
+{% block content %}
+  <div class="section-header">
+    <h4 class="mb-0">Обзор системы</h4>
+    <div class="d-flex gap-2">
+      <a href="/admin-panel/users/create/" class="btn btn-primary">Новый пользователь</a>
+      <a href="/admin-panel/backups/" class="btn btn-outline-secondary">Бэкапы</a>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.clients }}</div>
+        <div class="kpi-label">Клиентов</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.orders }}</div>
+        <div class="kpi-label">Заказов</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card kpi-card">
+        <div class="kpi-value">{{ stats.reports }}</div>
+        <div class="kpi-label">Отчётов</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-header">
+      <h6 class="mb-0">Быстрые действия</h6>
+    </div>
+    <div class="d-flex flex-wrap gap-2">
+      <a href="/admin-panel/users/" class="btn btn-outline-secondary">Пользователи</a>
+      <a href="/admin-panel/roles/" class="btn btn-outline-secondary">Роли</a>
+      <a href="/clients/" class="btn btn-outline-secondary">Клиенты</a>
+      <a href="/orders/" class="btn btn-outline-secondary">Заказы</a>
+    </div>
+  </div>
+{% endblock %}
