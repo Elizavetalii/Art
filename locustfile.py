@@ -117,8 +117,6 @@ class RandomAct(TaskSet):
             if new_id:
                 self.client_ids.append(new_id)
 
-
-
 class WebsiteUser(HttpUser):
     wait_time = constant_throughput(5)
     tasks = [UserFlow, RandomAct]

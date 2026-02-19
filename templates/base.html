@@ -62,9 +62,16 @@
         </div>
 
         {% if messages %}
-          <div class="mb-3">
+          <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100;">
             {% for message in messages %}
-              <div class="alert alert-{{ message.tags }} py-2 mb-2">{{ message }}</div>
+              <div class="toast align-items-center text-bg-{% if 'success' in message.tags %}success{% elif 'error' in message.tags or 'danger' in message.tags %}danger{% elif 'warning' in message.tags %}warning{% else %}info{% endif %} border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4500">
+                <div class="d-flex">
+                  <div class="toast-body">
+                    {{ message }}
+                  </div>
+                  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+              </div>
             {% endfor %}
           </div>
         {% endif %}
@@ -102,5 +109,14 @@
       lucide.createIcons();
     }
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".toast").forEach((toastEl) => {
+        const t = new bootstrap.Toast(toastEl);
+        t.show();
+      });
+    });
+  </script>
+  {% block extra_js %}{% endblock %}
 </body>
 </html>

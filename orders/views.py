@@ -22,6 +22,7 @@ from crm.models import (
     EquipmentReservation,
     IngredientStock,
     DishEquipmentRequirement,
+    Ingredient,
 )
 from .forms import OrderForm, PickingSessionForm, OrderItemPickFormSet, OrderItemFormSet
 
@@ -79,15 +80,9 @@ def _attach_tech_card(order, item):
 
 
 def _ensure_order_number(order):
-    if order.order_number:
+    if order.pk and order.order_number:
         return
-    date_part = timezone.now().strftime("%Y%m%d")
-    base = f"ORD-{date_part}-"
-    last = Order.objects.filter(order_number__startswith=base).order_by("-order_number").first()
-    seq = 1
-    if last and last.order_number.split("-")[-1].isdigit():
-        seq = int(last.order_number.split("-")[-1]) + 1
-    order.order_number = f"{base}{seq:03d}"
+    order.order_number = Order.generate_order_number()
 
 
 RESERVED_STATUSES = {
@@ -204,16 +199,28 @@ def _validate_order_capacity(order, items):
             ingredients_need[comp.ingredient_id] = ingredients_need.get(comp.ingredient_id, 0) + qty
 
     ingredient_warnings = []
+    ingredients_map = Ingredient.objects.in_bulk(list(ingredients_need.keys()))
     for ingredient_id, qty in ingredients_need.items():
         stock = IngredientStock.objects.filter(ingredient_id=ingredient_id).first()
         available = stock.quantity if stock else 0
         reserved = IngredientReservation.objects.filter(ingredient_id=ingredient_id, production_date=order.production_date).exclude(
             order=order
         ).aggregate(total=Sum("quantity"))["total"] or 0
-        if available - reserved < qty:
-            errors.append("Недостаточно ингредиентов для заказа.")
-            ingredient_warnings.append((ingredient_id, float(qty)))
+        missing = qty - (available - reserved)
+        if missing > 0:
+            ingredient = ingredients_map.get(ingredient_id)
+            ingredient_warnings.append(
+                {
+                    "id": ingredient_id,
+                    "name": ingredient.name if ingredient else f"ID {ingredient_id}",
+                    "required": float(qty),
+                    "available": float(available),
+                    "reserved": float(reserved),
+                    "missing": float(missing),
+                }
+            )
     if ingredient_warnings:
+        errors.append("Недостаточно ингредиентов для заказа. Проверьте список ниже.")
         info["ingredient_warnings"] = ingredient_warnings
 
     for item in items:
@@ -472,6 +479,7 @@ def order_availability(request):
     order_id = request.GET.get("order_id")
     if not delivery_date:
         return HttpResponseBadRequest("delivery_date обязателен")
+    max_capacity = getattr(settings, "PRODUCTION_MAX_WEIGHT_KG", None)
     reserved_map = _get_reserved_qty_map(delivery_date, exclude_order_id=order_id)
     reserved_capacity = ProductionReservation.objects.filter(production_date=delivery_date).aggregate(
         total=Sum("weight_kg")
@@ -531,6 +539,21 @@ def order_delete(request, pk):
 def order_archive(request):
     qs = Order.objects.select_related("client").filter(is_archived=True)
     return render(request, "orders/archive.html", {"orders": qs, "statuses": OrderStatus.choices})
+
+
+@roles_required(["Менеджер", "Администратор системы"])
+def order_bulk_delete(request):
+    if request.method != "POST":
+        return HttpResponseBadRequest("POST обязателен")
+    ids = request.POST.getlist("order_ids")
+    if not ids:
+        messages.error(request, "Выберите заказы для удаления.")
+        return redirect("/orders/")
+    qs = Order.objects.filter(id__in=ids)
+    count = qs.count()
+    qs.delete()
+    messages.success(request, f"Удалено заказов: {count}.")
+    return redirect("/orders/")
 
 
 @roles_required(["Менеджер", "Сборщик заказов"])

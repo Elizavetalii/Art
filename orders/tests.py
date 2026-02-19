@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 
 from django.test import TestCase
 
@@ -50,6 +50,24 @@ class OrderFormTests(TestCase):
         self.assertFalse(form.is_valid())
         self.assertIn("delivery_date", form.errors)
         self.assertIn("delivery_time", form.errors)
+
+    def test_delivery_date_cannot_be_in_past(self):
+        past_day = date.today() - timedelta(days=1)
+        form = OrderForm(
+            data={
+                "order_number": "",
+                "client": self.client_obj.id,
+                "status": OrderStatus.DRAFT,
+                "address": "Test address",
+                "delivery_date": past_day.isoformat(),
+                "delivery_time": "10:00",
+                "delivery_type": "Разовая",
+                "comments": "",
+                "total_amount": "0.00",
+            }
+        )
+        self.assertFalse(form.is_valid())
+        self.assertIn("delivery_date", form.errors)
 
 
 class OrderItemFormTests(TestCase):

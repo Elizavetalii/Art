@@ -50,7 +50,7 @@
                   {{ o.status }}
                 </span>
               </td>
-              <td>{{ o.created_at|date:"d.m.Y" }}</td>
+              <td>{{ o.delivery_date|date:"d.m.Y"|default:"—" }}</td>
               <td class="text-end">
                 <a class="btn btn-sm btn-outline-secondary" href="/orders/picker/{{ o.id }}/">Открыть</a>
               </td>

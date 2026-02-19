@@ -308,6 +308,16 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    @classmethod
+    def generate_order_number(cls):
+        date_part = timezone.now().strftime("%Y%m%d")
+        base = f"ORD-{date_part}-"
+        last = cls.objects.filter(order_number__startswith=base).order_by("-order_number").first()
+        seq = 1
+        if last and last.order_number.split("-")[-1].isdigit():
+            seq = int(last.order_number.split("-")[-1]) + 1
+        return f"{base}{seq:03d}"
+
     class Meta:
         ordering = ['-created_at']
         verbose_name = 'Заказ'

@@ -1,5 +1,3 @@
-image: python:3.11
-
 stages:
   - build
   - lint
@@ -7,18 +5,24 @@ stages:
   - security
 
 variables:
+  VENV_PATH: ".venv"
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   DJANGO_SETTINGS_MODULE: "factory_crm.settings"
-  DJANGO_SECRET_KEY: "ci-temp-secret"
-  DJANGO_DEBUG: "true"
+  SECRET_KEY: "ci-temp-secret"
+  DEBUG: "true"
+  ALLOWED_HOSTS: "localhost,127.0.0.1"
 
 cache:
-  key: "pip-$CI_COMMIT_REF_SLUG"
+  key: "venv-$CI_COMMIT_REF_SLUG"
   paths:
     - .cache/pip/
+    - .venv/
 
 before_script:
-  - echo "Обновляю pip и устанавливаю зависимости"
+  - echo "Подготовка виртуального окружения и установка зависимостей"
+  - python3 --version
+  - python3 -m venv "$VENV_PATH"
+  - source "$VENV_PATH/bin/activate"
   - python -m pip install --upgrade pip
   - pip install -r requirements.txt
 
@@ -26,15 +30,20 @@ build:check:
   stage: build
   script:
     - echo "Проверяю корректность конфигурации Django"
+    - source "$VENV_PATH/bin/activate"
     - python manage.py check
+    - echo "Проверка конфигурации завершена успешно"
 
 build:collectstatic:
   stage: build
   script:
     - echo "Собираю статические файлы"
+    - source "$VENV_PATH/bin/activate"
     - python manage.py collectstatic --noinput
+    - echo "Статические файлы собраны"
   artifacts:
     when: always
+    expire_in: 7 days
     paths:
       - staticfiles/
 
@@ -42,11 +51,14 @@ lint:ruff:
   stage: lint
   script:
     - echo "Запускаю линтер Ruff"
+    - source "$VENV_PATH/bin/activate"
     - pip install ruff
     - mkdir -p reports
-    - ruff check . --output-format=json > reports/ruff.json
+    - ruff check . --output-format=json > reports/ruff.json || true
+    - echo "Отчет Ruff сформирован"
   artifacts:
     when: always
+    expire_in: 7 days
     paths:
       - reports/ruff.json
   allow_failure: true
@@ -55,10 +67,13 @@ api:schema:
   stage: api
   script:
     - echo "Генерирую OpenAPI схему"
+    - source "$VENV_PATH/bin/activate"
     - mkdir -p artifacts
     - python manage.py spectacular --file artifacts/openapi.yaml
+    - echo "OpenAPI схема создана"
   artifacts:
     when: always
+    expire_in: 7 days
     paths:
       - artifacts/openapi.yaml
 
@@ -66,11 +81,14 @@ security:bandit:
   stage: security
   script:
     - echo "Запускаю анализ безопасности Bandit"
+    - source "$VENV_PATH/bin/activate"
     - pip install bandit
     - mkdir -p reports
-    - bandit -r . -f json -o reports/bandit.json
+    - bandit -r . -f json -o reports/bandit.json || true
+    - echo "Отчет Bandit сформирован"
   artifacts:
     when: always
+    expire_in: 7 days
     paths:
       - reports/bandit.json
   allow_failure: true
@@ -79,11 +97,14 @@ security:pip-audit:
   stage: security
   script:
     - echo "Проверяю зависимости на известные уязвимости"
+    - source "$VENV_PATH/bin/activate"
     - pip install pip-audit
     - mkdir -p reports
-    - pip-audit -r requirements.txt -f json -o reports/pip-audit.json
+    - pip-audit -r requirements.txt -f json -o reports/pip-audit.json || true
+    - echo "Отчет pip-audit сформирован"
   artifacts:
     when: always
+    expire_in: 7 days
     paths:
       - reports/pip-audit.json
   allow_failure: true

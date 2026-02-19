@@ -47,6 +47,33 @@
           {% if info.client_daily_limit %}
             <div class="small text-muted">Лимит клиента: {{ info.client_daily_limit }} кг (занято {{ info.client_reserved }})</div>
           {% endif %}
+          {% if info.ingredient_warnings %}
+            <div class="mt-2 text-danger fw-semibold">Недостаточно ингредиентов</div>
+            <div class="table-responsive">
+              <table class="table table-sm mb-0">
+                <thead>
+                  <tr>
+                    <th>Ингредиент</th>
+                    <th>Нужно</th>
+                    <th>Доступно</th>
+                    <th>Зарезервировано</th>
+                    <th>Не хватает</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for w in info.ingredient_warnings %}
+                    <tr>
+                      <td>{{ w.name }}</td>
+                      <td>{{ w.required }}</td>
+                      <td>{{ w.available }}</td>
+                      <td>{{ w.reserved }}</td>
+                      <td class="text-danger">{{ w.missing }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% endif %}
         </div>
       {% endif %}
       {% if formset %}

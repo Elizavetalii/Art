@@ -49,44 +49,99 @@
   </div>
 
   <div class="card">
-    <div class="table-responsive">
-      <table class="table mb-0">
-        <thead>
-          <tr>
-            <th>Номер</th>
-            <th>Клиент</th>
-            <th>Статус</th>
-            <th>Сумма</th>
-            <th>Дата</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for o in orders %}
+    <form method="post" action="/orders/bulk-delete/" id="bulk-delete-form">
+      {% csrf_token %}
+      <div class="d-flex justify-content-between align-items-center px-3 pt-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="select-all">
+          <label class="form-check-label" for="select-all">Выбрать все</label>
+        </div>
+        <button class="btn btn-outline-danger btn-sm" id="bulk-delete-btn" disabled>Удалить выбранные</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table mb-0">
+          <thead>
             <tr>
-              <td>{{ o.order_number }}</td>
-              <td>{{ o.client.name }}</td>
-              <td>
-                <span class="badge-soft {% if o.status == 'Отменен' %}danger{% elif o.status == 'Отгружен' %}success{% elif o.status == 'Подтвержден производством' %}primary{% else %}warn{% endif %}">
-                  {{ o.status }}
-                </span>
-              </td>
-              <td>{{ o.total_amount }}</td>
-              <td>{{ o.created_at|date:"d.m.Y" }}</td>
-              <td class="text-end">
-                <a class="btn btn-sm btn-outline-secondary" href="/orders/{{ o.id }}/edit/">Изменить</a>
-                <form method="post" action="/orders/{{ o.id }}/archive-toggle/" class="d-inline">
-                  {% csrf_token %}
-                  <button class="btn btn-sm btn-outline-secondary">В архив</button>
-                </form>
-                <a class="btn btn-sm btn-outline-danger" href="/orders/{{ o.id }}/delete/">Удалить</a>
-              </td>
+              <th style="width: 36px;"></th>
+              <th>Номер</th>
+              <th>Клиент</th>
+              <th>Статус</th>
+              <th>Сумма</th>
+              <th>Дата доставки</th>
+              <th></th>
             </tr>
-          {% empty %}
-            <tr><td colspan="6" class="text-muted">Нет заказов</td></tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {% for o in orders %}
+              <tr>
+                <td>
+                  <input class="form-check-input order-checkbox" type="checkbox" name="order_ids" value="{{ o.id }}">
+                </td>
+                <td>{{ o.order_number }}</td>
+                <td>{{ o.client.name }}</td>
+                <td>
+                  <span class="badge-soft {% if o.status == 'Отменен' %}danger{% elif o.status == 'Отгружен' %}success{% elif o.status == 'Подтвержден производством' %}primary{% else %}warn{% endif %}">
+                    {{ o.status }}
+                  </span>
+                </td>
+                <td>{{ o.total_amount }}</td>
+                <td>{{ o.delivery_date|date:"d.m.Y"|default:"—" }}</td>
+                <td class="text-end">
+                  <a class="btn btn-sm btn-outline-secondary" href="/orders/{{ o.id }}/edit/">Изменить</a>
+                  <form method="post" action="/orders/{{ o.id }}/archive-toggle/" class="d-inline">
+                    {% csrf_token %}
+                    <button class="btn btn-sm btn-outline-secondary">В архив</button>
+                  </form>
+                  <a class="btn btn-sm btn-outline-danger" href="/orders/{{ o.id }}/delete/">Удалить</a>
+                </td>
+              </tr>
+            {% empty %}
+              <tr><td colspan="7" class="text-muted">Нет заказов</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </form>
   </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    (function () {
+      const selectAll = document.getElementById("select-all");
+      const checkboxes = Array.from(document.querySelectorAll(".order-checkbox"));
+      const bulkBtn = document.getElementById("bulk-delete-btn");
+      const form = document.getElementById("bulk-delete-form");
+
+      function updateState() {
+        const checkedCount = checkboxes.filter((c) => c.checked).length;
+        bulkBtn.disabled = checkedCount === 0;
+        selectAll.checked = checkedCount > 0 && checkedCount === checkboxes.length;
+        selectAll.indeterminate = checkedCount > 0 && checkedCount < checkboxes.length;
+      }
+
+      if (selectAll) {
+        selectAll.addEventListener("change", () => {
+          checkboxes.forEach((c) => (c.checked = selectAll.checked));
+          updateState();
+        });
+      }
+
+      checkboxes.forEach((c) => c.addEventListener("change", updateState));
+      updateState();
+
+      if (form) {
+        form.addEventListener("submit", (e) => {
+          const checkedCount = checkboxes.filter((c) => c.checked).length;
+          if (checkedCount === 0) {
+            e.preventDefault();
+            return;
+          }
+          if (!confirm(`Удалить выбранные заказы (${checkedCount})?`)) {
+            e.preventDefault();
+          }
+        });
+      }
+    })();
+  </script>
 {% endblock %}

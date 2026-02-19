@@ -1,4 +1,5 @@
 from django import forms
+from django.utils import timezone
 from decimal import Decimal, InvalidOperation
 from crm.forms import BootstrapFormMixin
 from django.forms import modelformset_factory
@@ -20,7 +21,7 @@ class OrderForm(BootstrapFormMixin, forms.ModelForm):
             "total_amount",
         ]
         widgets = {
-            "delivery_date": forms.DateInput(attrs={"type": "date"}),
+            "delivery_date": forms.DateInput(attrs={"type": "date"}, format="%Y-%m-%d"),
             "delivery_time": forms.TimeInput(attrs={"type": "time"}),
         }
 
@@ -31,6 +32,8 @@ class OrderForm(BootstrapFormMixin, forms.ModelForm):
             self.fields["order_number"].widget.attrs.setdefault("readonly", True)
             self.fields["order_number"].required = False
             self.fields["order_number"].widget.attrs.pop("required", None)
+            if not self.instance.pk and not self.instance.order_number:
+                self.fields["order_number"].initial = Order.generate_order_number()
         if "total_amount" in self.fields:
             self.fields["total_amount"].widget.attrs.setdefault("readonly", True)
             self.fields["total_amount"].widget.attrs.setdefault("inputmode", "decimal")
@@ -42,6 +45,15 @@ class OrderForm(BootstrapFormMixin, forms.ModelForm):
                 for value, label in self.fields["status"].choices
                 if value in allowed
             ]
+        if "delivery_date" in self.fields:
+            min_date = timezone.localdate()
+            # Не ставим min, если редактируем заказ с датой в прошлом, чтобы дата отображалась
+            if not self.instance.pk or not self.instance.delivery_date or self.instance.delivery_date >= min_date:
+                self.fields["delivery_date"].widget.attrs["min"] = min_date.isoformat()
+            else:
+                self.fields["delivery_date"].widget.attrs.pop("min", None)
+            # Явный формат для value, чтобы input type=date показывал значение
+            self.fields["delivery_date"].input_formats = ["%Y-%m-%d"]
 
     def clean(self):
         cleaned = super().clean()
@@ -50,6 +62,9 @@ class OrderForm(BootstrapFormMixin, forms.ModelForm):
             cleaned["total_amount"] = total_amount.replace(",", ".")
         if not cleaned.get("delivery_date"):
             self.add_error("delivery_date", "Укажите дату доставки.")
+        else:
+            if cleaned["delivery_date"] < timezone.localdate():
+                self.add_error("delivery_date", "Дата доставки не может быть в прошедшем времени.")
         if not cleaned.get("delivery_time"):
             self.add_error("delivery_time", "Укажите время доставки.")
         return cleaned

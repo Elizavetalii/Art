@@ -9,12 +9,14 @@ from .views import (
     picker_orders,
     picker_order_detail,
     order_archive_toggle,
+    order_bulk_delete,
 )
 
 urlpatterns = [
     path("", order_list, name="orders-list"),
     path("create/", order_create, name="orders-create"),
     path("archive/", order_archive, name="orders-archive"),
+    path("bulk-delete/", order_bulk_delete, name="orders-bulk-delete"),
     path("picker/", picker_orders, name="orders-picker"),
     path("picker/<int:pk>/", picker_order_detail, name="orders-picker-detail"),
     path("<int:pk>/status/", order_status_update, name="orders-status"),
