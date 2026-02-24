@@ -3,7 +3,9 @@ import shutil
 from datetime import datetime
 from django.conf import settings
 from django.core.paginator import Paginator
+from django.db import IntegrityError, connection, transaction
 from django.db import models as dj_models
+from django.db.models import ProtectedError
 from django.db.models import Q
 from django import forms
 from django.shortcuts import render, redirect, get_object_or_404
@@ -18,6 +20,18 @@ from .entity_config import ENTITIES, EntityConfig
 from crm.forms import BootstrapFormMixin
 
 User = get_user_model()
+
+
+def _cleanup_legacy_user_refs(user_id: int) -> None:
+    """
+    Remove references from legacy tables that might still have FK to crm_user
+    but are not represented by installed models (e.g. django_admin_log).
+    """
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+        tables = {row[0] for row in cursor.fetchall()}
+        if "django_admin_log" in tables:
+            cursor.execute("DELETE FROM django_admin_log WHERE user_id = %s", [user_id])
 
 
 @role_required("Администратор системы")
@@ -75,8 +89,18 @@ def user_edit(request, pk):
 def user_delete(request, pk):
     user = get_object_or_404(User, pk=pk)
     if request.method == "POST":
-        user.delete()
-        messages.success(request, "Пользователь удалён.")
+        if request.user.pk == user.pk:
+            messages.error(request, "Нельзя удалить текущего авторизованного пользователя.")
+            return redirect("/admin-panel/users/")
+        try:
+            with transaction.atomic():
+                _cleanup_legacy_user_refs(user.pk)
+                user.delete()
+            messages.success(request, "Пользователь удалён.")
+        except ProtectedError:
+            messages.error(request, "Невозможно удалить пользователя: есть связанные защищённые данные.")
+        except IntegrityError:
+            messages.error(request, "Невозможно удалить пользователя: найдены связанные записи в базе данных.")
         return redirect("/admin-panel/users/")
     return render(request, "admin_panel/user_delete.html", {"object": user})
 

@@ -1,0 +1,87 @@
+<mxfile host="app.diagrams.net" modified="2026-02-23T11:40:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="functional-roles" name="Функциональная схема по ролям">
+    <mxGraphModel dx="2200" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3000" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="3000" height="1800" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="title" value="Функциональная схема пользователя по ролям — Art Culinary CRM" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontStyle=1;fontSize=24;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="2000" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="common" value="Общие функции системы" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="90" width="800" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="common_items" value="Авторизация&#xa;Восстановление пароля&#xa;Выход из системы&#xa;Просмотр уведомлений" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="130" width="740" height="110" as="geometry"/>
+        </mxCell>
+
+        <!-- Manager -->
+        <mxCell id="manager_role" value="Роль: Менеджер" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="320" width="820" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="manager_fn" value="1. Управление клиентами (CRUD)&#xa;2. Контакты, этапы, история взаимодействий&#xa;3. Создание/редактирование заказов&#xa;4. Массовое архивирование и удаление заказов&#xa;5. Контроль доступности ингредиентов&#xa;6. Просмотр аналитики и отчетов" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;align=left;" vertex="1" parent="1">
+          <mxGeometry x="150" y="360" width="760" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- Logistician -->
+        <mxCell id="log_role" value="Роль: Логист" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="320" width="820" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="log_fn" value="1. Планирование доставок (дата/время)&#xa;2. Формирование маршрутов&#xa;3. Управление остановками маршрутов&#xa;4. Назначение курьеров на маршруты&#xa;5. Контроль статусов доставок&#xa;6. Проверка подтверждающих документов" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="360" width="760" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- Courier -->
+        <mxCell id="courier_role" value="Роль: Курьер" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="320" width="820" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="courier_fn" value="1. Просмотр назначенных маршрутов&#xa;2. Просмотр списка остановок&#xa;3. Обновление статуса остановки/доставки&#xa;4. Загрузка документа доставки (proof)&#xa;5. Указание причины недоставки&#xa;6. Просмотр истории доставок" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1990" y="360" width="760" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- Picker -->
+        <mxCell id="picker_role" value="Роль: Сборщик" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="650" width="820" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="picker_fn" value="1. Просмотр заказов на сборку&#xa;2. Запуск и завершение сессии сборки&#xa;3. Обновление статусов позиций&#xa;4. Фиксация фактического количества&#xa;5. Внесение комментариев по позициям" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;align=left;" vertex="1" parent="1">
+          <mxGeometry x="610" y="690" width="760" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Admin -->
+        <mxCell id="admin_role" value="Роль: Администратор" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1500" y="650" width="820" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="admin_fn" value="1. Управление пользователями и ролями&#xa;2. Управление справочниками сущностей&#xa;3. Контроль доступа и прав&#xa;4. Проверка целостности данных&#xa;5. Резервное копирование и восстановление&#xa;6. Просмотр аудита действий" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1530" y="690" width="760" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Outputs -->
+        <mxCell id="outputs" value="Результаты выполнения функций" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="980" width="1520" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="outputs_items" value="• Актуальные данные по клиентам, заказам, доставкам и маршрутам&#xa;• Корректные статусы заказов и остановок&#xa;• Отчеты и аналитика для менеджмента&#xa;• Подтверждающие документы доставки&#xa;• Аудит действий пользователей и журнал изменений&#xa;• Управляемые доступы и роли" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;align=left;" vertex="1" parent="1">
+          <mxGeometry x="770" y="1020" width="1460" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="e1" value="доступ к общим функциям" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="manager_role" target="common"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" value="доступ к общим функциям" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="log_role" target="common"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" value="доступ к общим функциям" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="courier_role" target="common"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" value="доступ к общим функциям" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="picker_role" target="common"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" value="доступ к общим функциям" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="admin_role" target="common"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e6" value="бизнес-операции" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="manager_role" target="outputs"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" value="логистические операции" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="log_role" target="outputs"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" value="операции доставки" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="courier_role" target="outputs"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" value="операции сборки" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="picker_role" target="outputs"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" value="администрирование" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="admin_role" target="outputs"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

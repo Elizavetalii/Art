@@ -4,6 +4,9 @@
 </div>
 <div class="menu">
   <div class="menu-title">Курьер</div>
+  <a href="/logistics/courier/profile/" class="{% if '/logistics/courier/profile/' in request.path %}active{% endif %}">
+    <i data-lucide="user"></i>Профиль
+  </a>
   <a href="/logistics/courier/routes/" class="{% if '/logistics/courier/routes/' in request.path %}active{% endif %}">
     <i data-lucide="route"></i>Маршруты
   </a>

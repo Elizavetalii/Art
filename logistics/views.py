@@ -29,6 +29,7 @@ from .forms import (
     LogisticianProfileForm,
     CourierStopStatusForm,
     ProofUploadForm,
+    CourierProfileForm,
 )
 
 
@@ -62,6 +63,11 @@ def _log_action(actor, obj, field_name="", old_value="", new_value="", reason=""
         new_value=str(new_value or ""),
         reason=reason or "",
     )
+
+
+def _get_or_create_courier_profile(user):
+    courier, created = Courier.objects.get_or_create(user=user)
+    return courier, created
 
 
 def _haversine_km(lat1, lon1, lat2, lon2):
@@ -525,9 +531,9 @@ def logistic_profile(request):
 
 @role_required("Курьер")
 def courier_routes(request):
-    courier = getattr(request.user, "courier_profile", None)
-    if not courier:
-        return HttpResponseBadRequest("Профиль курьера не найден.")
+    courier, created = _get_or_create_courier_profile(request.user)
+    if created:
+        messages.info(request, "Профиль курьера создан автоматически. Заполните данные профиля.")
     date = request.GET.get("date")
     assignments = CourierAssignment.objects.filter(courier=courier).select_related("route")
     routes = [a.route for a in assignments]
@@ -538,9 +544,7 @@ def courier_routes(request):
 
 @role_required("Курьер")
 def courier_route_detail(request, pk):
-    courier = getattr(request.user, "courier_profile", None)
-    if not courier:
-        return HttpResponseBadRequest("Профиль курьера не найден.")
+    courier, _ = _get_or_create_courier_profile(request.user)
     route = get_object_or_404(Route, pk=pk)
     if not CourierAssignment.objects.filter(route=route, courier=courier).exists():
         return HttpResponseBadRequest("Маршрут недоступен.")
@@ -556,9 +560,7 @@ def courier_route_detail(request, pk):
 
 @role_required("Курьер")
 def courier_stop_update(request, pk):
-    courier = getattr(request.user, "courier_profile", None)
-    if not courier:
-        return HttpResponseBadRequest("Профиль курьера не найден.")
+    courier, _ = _get_or_create_courier_profile(request.user)
     stop = get_object_or_404(RouteStop, pk=pk)
     if not CourierAssignment.objects.filter(route=stop.route, courier=courier).exists():
         return HttpResponseBadRequest("Остановка недоступна.")
@@ -605,9 +607,7 @@ def courier_stop_update(request, pk):
 
 @role_required("Курьер")
 def courier_upload_proof(request, pk):
-    courier = getattr(request.user, "courier_profile", None)
-    if not courier:
-        return HttpResponseBadRequest("Профиль курьера не найден.")
+    courier, _ = _get_or_create_courier_profile(request.user)
     stop = get_object_or_404(RouteStop, pk=pk)
     if not CourierAssignment.objects.filter(route=stop.route, courier=courier).exists():
         return HttpResponseBadRequest("Остановка недоступна.")
@@ -670,3 +670,21 @@ def proof_review_update(request, pk):
     _log_action(request.user, stop, "proof_review_status", old_status, stop.proof_review_status, comment)
     messages.success(request, "Проверка обновлена.")
     return redirect("/logistics/manager/proofs/")
+
+
+@role_required("Курьер")
+def courier_profile(request):
+    courier, _ = _get_or_create_courier_profile(request.user)
+    form = CourierProfileForm(request.POST or None, instance=courier)
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        messages.success(request, "Профиль курьера обновлён.")
+        return redirect("/logistics/courier/profile/")
+    return render(
+        request,
+        "courier/profile.html",
+        {
+            "form": form,
+            "courier": courier,
+        },
+    )

@@ -1,0 +1,99 @@
+№	Модуль	Описание	Строк	Размер (КБ)
+1	manage.py	Точка входа Django‑проекта, запуск команд и сервера	18	0.5
+2	factory_crm/__init__.py	Маркер пакета factory_crm	1	0.0
+3	factory_crm/asgi.py	ASGI‑конфигурация для асинхронного запуска	5	0.2
+4	factory_crm/settings.py	Центральные настройки проекта (БД, приложения, безопасность)	179	6.1
+5	factory_crm/urls.py	Маршрутизация URL и привязка обработчиков	50	2.4
+6	factory_crm/views.py	Контроллеры и бизнес‑логика пользовательских сценариев	79	2.7
+7	factory_crm/wsgi.py	WSGI‑конфигурация для production‑запуска	5	0.2
+8	crm/__init__.py	Маркер пакета crm	1	0.0
+9	crm/admin.py	Регистрация сущностей в админ‑интерфейсе	91	2.7
+10	crm/admin_site.py	Служебный файл проекта	74	2.4
+11	crm/api.py	API‑логика и служебные endpoint‑обработчики	305	9.0
+12	crm/apps.py	Конфигурация приложения Django	7	0.2
+13	crm/forms.py	Формы ввода, валидация и обработка полей	14	0.5
+14	crm/management/commands/seed_dishes.py	Служебный файл проекта	239	9.1
+15	crm/management/commands/seed_logistics.py	Служебный файл проекта	170	6.8
+16	crm/models.py	Описание моделей и структуры данных модуля	665	32.5
+17	accounts/__init__.py	Маркер пакета accounts	0	0.0
+18	accounts/admin.py	Регистрация сущностей в админ‑интерфейсе	3	0.1
+19	accounts/apps.py	Конфигурация приложения Django	5	0.1
+20	accounts/context_processors.py	Передача данных ролей/состояния в шаблоны	11	0.5
+21	accounts/management/__init__.py	Маркер пакета accounts	1	0.0
+22	accounts/management/commands/__init__.py	Маркер пакета accounts	1	0.0
+23	accounts/management/commands/seed_demo.py	Служебный файл проекта	158	5.7
+24	accounts/models.py	Описание моделей и структуры данных модуля	3	0.1
+25	accounts/tests.py	Автоматизированные тесты модуля	3	0.1
+26	accounts/urls.py	Маршрутизация URL и привязка обработчиков	26	1.2
+27	accounts/utils.py	Вспомогательные функции и сервисные утилиты	28	0.9
+28	accounts/views.py	Контроллеры и бизнес‑логика пользовательских сценариев	68	2.6
+29	clients/__init__.py	Маркер пакета clients	0	0.0
+30	clients/admin.py	Регистрация сущностей в админ‑интерфейсе	3	0.1
+31	clients/apps.py	Конфигурация приложения Django	5	0.1
+32	clients/forms.py	Формы ввода, валидация и обработка полей	60	1.8
+33	clients/models.py	Описание моделей и структуры данных модуля	3	0.1
+34	clients/tests.py	Автоматизированные тесты модуля	3	0.1
+35	clients/urls.py	Маршрутизация URL и привязка обработчиков	10	0.4
+36	clients/views.py	Контроллеры и бизнес‑логика пользовательских сценариев	117	4.9
+37	orders/__init__.py	Маркер пакета orders	0	0.0
+38	orders/admin.py	Регистрация сущностей в админ‑интерфейсе	3	0.1
+39	orders/apps.py	Конфигурация приложения Django	5	0.1
+40	orders/forms.py	Формы ввода, валидация и обработка полей	186	7.9
+41	orders/models.py	Описание моделей и структуры данных модуля	3	0.1
+42	orders/tests.py	Автоматизированные тесты модуля	121	4.4
+43	orders/urls.py	Маршрутизация URL и привязка обработчиков	26	0.9
+44	orders/views.py	Контроллеры и бизнес‑логика пользовательских сценариев	664	29.7
+45	logistics/__init__.py	Маркер пакета logistics	0	0.0
+46	logistics/admin.py	Регистрация сущностей в админ‑интерфейсе	3	0.1
+47	logistics/apps.py	Конфигурация приложения Django	5	0.1
+48	logistics/forms.py	Формы ввода, валидация и обработка полей	249	9.7
+49	logistics/models.py	Описание моделей и структуры данных модуля	3	0.1
+50	logistics/tests.py	Автоматизированные тесты модуля	116	4.2
+51	logistics/urls.py	Маршрутизация URL и привязка обработчиков	40	1.7
+52	logistics/views.py	Контроллеры и бизнес‑логика пользовательских сценариев	690	28.9
+53	reports/__init__.py	Маркер пакета reports	0	0.0
+54	reports/admin.py	Регистрация сущностей в админ‑интерфейсе	3	0.1
+55	reports/apps.py	Конфигурация приложения Django	5	0.1
+56	reports/forms.py	Формы ввода, валидация и обработка полей	17	0.5
+57	reports/models.py	Описание моделей и структуры данных модуля	32	1.3
+58	reports/tests.py	Автоматизированные тесты модуля	3	0.1
+59	reports/urls.py	Маршрутизация URL и привязка обработчиков	10	0.4
+60	reports/views.py	Контроллеры и бизнес‑логика пользовательских сценариев	154	5.6
+61	admin_panel/__init__.py	Маркер пакета admin_panel	0	0.0
+62	admin_panel/admin.py	Регистрация сущностей в админ‑интерфейсе	3	0.1
+63	admin_panel/apps.py	Конфигурация приложения Django	5	0.1
+64	admin_panel/entity_config.py	Конфигурация универсальных сущностей админ‑панели	320	12.0
+65	admin_panel/forms.py	Формы ввода, валидация и обработка полей	82	2.8
+66	admin_panel/models.py	Описание моделей и структуры данных модуля	33	1.2
+67	admin_panel/tests.py	Автоматизированные тесты модуля	3	0.1
+68	admin_panel/urls.py	Маршрутизация URL и привязка обработчиков	46	1.8
+69	admin_panel/views.py	Контроллеры и бизнес‑логика пользовательских сценариев	545	22.6
+70	dashboard/__init__.py	Маркер пакета dashboard	0	0.0
+71	dashboard/admin.py	Регистрация сущностей в админ‑интерфейсе	3	0.1
+72	dashboard/apps.py	Конфигурация приложения Django	5	0.1
+73	dashboard/models.py	Описание моделей и структуры данных модуля	3	0.1
+74	dashboard/tests.py	Автоматизированные тесты модуля	3	0.1
+75	dashboard/urls.py	Маршрутизация URL и привязка обработчиков	9	0.4
+76	dashboard/views.py	Контроллеры и бизнес‑логика пользовательских сценариев	99	3.6
+77	portal/__init__.py	Маркер пакета portal	1	0.1
+78	portal/forms.py	Формы ввода, валидация и обработка полей	70	2.0
+79	portal/urls.py	Маршрутизация URL и привязка обработчиков	19	1.1
+80	portal/utils.py	Вспомогательные функции и сервисные утилиты	34	1.1
+81	portal/views.py	Контроллеры и бизнес‑логика пользовательских сценариев	155	5.9
+82	templates/accounts/login.html	HTML‑шаблон пользовательского интерфейса	26	1.0
+83	templates/accounts/login_base.html	HTML‑шаблон пользовательского интерфейса	52	1.9
+84	templates/accounts/password_reset_complete.html	HTML‑шаблон пользовательского интерфейса	6	0.3
+85	templates/accounts/password_reset_confirm.html	HTML‑шаблон пользовательского интерфейса	20	0.7
+86	templates/accounts/password_reset_done.html	HTML‑шаблон пользовательского интерфейса	8	0.4
+87	templates/accounts/password_reset_email.html	HTML‑шаблон пользовательского интерфейса	8	0.4
+88	templates/accounts/password_reset_form.html	HTML‑шаблон пользовательского интерфейса	17	0.7
+89	templates/accounts/password_reset_subject.txt	Текстовый служебный шаблон	1	0.0
+90	templates/admin/base_site.html	HTML‑шаблон пользовательского интерфейса	78	2.8
+91	templates/admin/index.html	HTML‑шаблон пользовательского интерфейса	30	1.0
+92	templates/admin_panel/access.html	HTML‑шаблон пользовательского интерфейса	42	1.2
+93	templates/admin_panel/backup_schedule.html	HTML‑шаблон пользовательского интерфейса	31	1.0
+94	templates/admin_panel/backups.html	HTML‑шаблон пользовательского интерфейса	66	2.4
+95	templates/admin_panel/data_check.html	HTML‑шаблон пользовательского интерфейса	50	1.7
+96	templates/admin_panel/entities/delete.html	HTML‑шаблон пользовательского интерфейса	38	1.5
+97	templates/admin_panel/entities/detail.html	HTML‑шаблон пользовательского интерфейса	69	2.4
+98	templates/admin_panel/entities/form.html	HTML‑шаблон пользовательского интерфейса	52	2.1

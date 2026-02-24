@@ -1,0 +1,140 @@
+<mxfile host="app.diagrams.net" modified="2026-02-23T12:55:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="ui-full-flow" name="UI полный сценарий">
+    <mxGraphModel dx="2200" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3800" pageHeight="2500" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Подробная схема работы пользовательского интерфейса Art Culinary CRM" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontStyle=1;fontSize=24;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="700" y="20" width="2400" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="auth" value="Экран входа /login&#xa;Email + пароль&#xa;Восстановление пароля по email" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="90" width="420" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="router" value="Определение роли пользователя&#xa;redirect на ролевой дашборд" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="240" width="420" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="shared" value="Общие элементы интерфейса (для всех ролей)" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f7f7f7;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="90" width="1400" height="250" as="geometry"/>
+        </mxCell>
+        <mxCell id="shared2" value="Шапка: тема, роль, выход&#xa;Боковое меню по роли&#xa;Breadcrumbs&#xa;Фильтры, поиск, сортировка, пагинация&#xa;Формы с валидацией&#xa;Toast-уведомления (success/warning/error)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;align=left;" vertex="1" parent="1">
+          <mxGeometry x="2230" y="130" width="1340" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- Row headers -->
+        <mxCell id="h_m" value="Менеджер" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="420" width="180" height="90" as="geometry"/></mxCell>
+        <mxCell id="h_l" value="Логист" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="640" width="180" height="90" as="geometry"/></mxCell>
+        <mxCell id="h_c" value="Курьер" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="860" width="180" height="90" as="geometry"/></mxCell>
+        <mxCell id="h_p" value="Сборщик" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="1080" width="180" height="90" as="geometry"/></mxCell>
+        <mxCell id="h_a" value="Администратор" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="1300" width="180" height="90" as="geometry"/></mxCell>
+
+        <!-- Manager flow -->
+        <mxCell id="m1" value="Дашборд менеджера" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="260" y="430" width="260" height="70" as="geometry"/></mxCell>
+        <mxCell id="m2" value="Клиенты /clients/&#xa;список + фильтры" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="560" y="430" width="260" height="70" as="geometry"/></mxCell>
+        <mxCell id="m3" value="Карточка клиента&#xa;контакты, этапы, взаимодействия" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="860" y="430" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="m4" value="Заказы /orders/&#xa;список + фильтры + сортировка" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1200" y="430" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="m5" value="Форма заказа&#xa;позиции, даты, адрес, комментарии" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1540" y="430" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="m6" value="Проверка availability API&#xa;ингредиенты/мощности/ограничения" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1880" y="430" width="330" height="70" as="geometry"/></mxCell>
+        <mxCell id="m7" value="Массовые действия&#xa;выбрать все, архив, удаление" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="2250" y="430" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="m8" value="Отчеты /reports/&#xa;аналитика, экспорт" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="2590" y="430" width="260" height="70" as="geometry"/></mxCell>
+
+        <!-- Logistician flow -->
+        <mxCell id="l1" value="Дашборд логиста" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="260" y="650" width="260" height="70" as="geometry"/></mxCell>
+        <mxCell id="l2" value="Список доставок&#xa;/logistics/deliveries" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="560" y="650" width="260" height="70" as="geometry"/></mxCell>
+        <mxCell id="l3" value="Планирование&#xa;дата и время доставки" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="860" y="650" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="l4" value="Маршруты /logistics/routes&#xa;создание и редактирование" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1200" y="650" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="l5" value="Остановки маршрута&#xa;порядок, время, статус" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1540" y="650" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="l6" value="Курьеры /logistics/couriers&#xa;назначение на маршрут" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1880" y="650" width="330" height="70" as="geometry"/></mxCell>
+        <mxCell id="l7" value="Контроль proof-документов&#xa;проверка и комментарий" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="2250" y="650" width="300" height="70" as="geometry"/></mxCell>
+
+        <!-- Courier flow -->
+        <mxCell id="c1" value="Дашборд курьера" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="260" y="870" width="260" height="70" as="geometry"/></mxCell>
+        <mxCell id="c2" value="Мои маршруты&#xa;/courier/routes" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="560" y="870" width="260" height="70" as="geometry"/></mxCell>
+        <mxCell id="c3" value="Маршрут и остановки&#xa;карточка рейса" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="860" y="870" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="c4" value="Обновление статусов&#xa;в пути / доставлено / не доставлено" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1200" y="870" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="c5" value="Загрузка proof&#xa;файл + комментарий" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1540" y="870" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="c6" value="История доставок&#xa;просмотр завершенных" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1880" y="870" width="330" height="70" as="geometry"/></mxCell>
+
+        <!-- Picker flow -->
+        <mxCell id="p1" value="Дашборд сборщика" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="260" y="1090" width="260" height="70" as="geometry"/></mxCell>
+        <mxCell id="p2" value="Список заказов на сборку&#xa;/orders/picker" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="560" y="1090" width="260" height="70" as="geometry"/></mxCell>
+        <mxCell id="p3" value="Сессия сборки&#xa;старт / завершение" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="860" y="1090" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="p4" value="Позиции заказа&#xa;статус и фактическое количество" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1200" y="1090" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="p5" value="Комментарии по сборке&#xa;замены и причины" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1540" y="1090" width="300" height="70" as="geometry"/></mxCell>
+
+        <!-- Admin flow -->
+        <mxCell id="a1" value="Admin dashboard" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="260" y="1310" width="260" height="70" as="geometry"/></mxCell>
+        <mxCell id="a2" value="Пользователи&#xa;создание / редактирование" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="560" y="1310" width="260" height="70" as="geometry"/></mxCell>
+        <mxCell id="a3" value="Роли и доступы&#xa;назначение прав" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="860" y="1310" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="a4" value="Сущности и справочники&#xa;универсальные формы" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1200" y="1310" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="a5" value="Backup / Restore&#xa;расписание и запуск" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1540" y="1310" width="300" height="70" as="geometry"/></mxCell>
+        <mxCell id="a6" value="Data check и аудит&#xa;контроль целостности" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="1880" y="1310" width="330" height="70" as="geometry"/></mxCell>
+
+        <!-- Bottom system behavior -->
+        <mxCell id="sys" value="Системное поведение интерфейса" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#000000;fillColor=#f2f2f2;fontColor=#000000;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="980" y="1500" width="1840" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="sys2" value="1) Валидация формы на клиенте и сервере&#xa;2) Отправка запроса в Django views/API&#xa;3) Обработка бизнес-правил и прав доступа (RBAC)&#xa;4) Сохранение/чтение данных через ORM&#xa;5) Возврат результата в UI (таблица, карточка, статус)&#xa;6) Показ уведомления пользователю (success/error/warning)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="1540" width="1780" height="230" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" value="аутентификация" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="auth" target="router"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" value="общие компоненты" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="router" target="common"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e_rm" value="role=manager" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=1.8;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="router" target="m1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_rl" value="role=logistician" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=1.8;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="router" target="l1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_rc" value="role=courier" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=1.8;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="router" target="c1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_rp" value="role=picker" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=1.8;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="router" target="p1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_ra" value="role=admin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=1.8;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="router" target="a1"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- manager chain -->
+        <mxCell id="em1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="m1" target="m2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="m2" target="m3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="m3" target="m4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="m4" target="m5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="m5" target="m6"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="m6" target="m7"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="em7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="m7" target="m8"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- logistician chain -->
+        <mxCell id="el1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="l1" target="l2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="el2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="l2" target="l3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="el3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="l3" target="l4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="el4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="l4" target="l5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="el5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="l5" target="l6"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="el6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="l6" target="l7"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- courier chain -->
+        <mxCell id="ec1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="c1" target="c2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ec2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="c2" target="c3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ec3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="c3" target="c4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ec4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="c4" target="c5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ec5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="c5" target="c6"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- picker chain -->
+        <mxCell id="ep1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="p1" target="p2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ep2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="p2" target="p3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ep3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="p3" target="p4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ep4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="p4" target="p5"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- admin chain -->
+        <mxCell id="ea1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="a1" target="a2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ea2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="a2" target="a3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ea3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="a3" target="a4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ea4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="a4" target="a5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="ea5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="a5" target="a6"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <!-- to system behavior -->
+        <mxCell id="er1" value="результат UI-операций" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=1.8;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="m8" target="sys"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="er2" value="результат UI-операций" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=1.8;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="l7" target="sys"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="er3" value="результат UI-операций" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=1.8;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="c6" target="sys"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="er4" value="результат UI-операций" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=1.8;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="p5" target="sys"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="er5" value="результат UI-операций" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=1.8;strokeColor=#000000;fontColor=#000000;endArrow=block;endFill=1;" edge="1" parent="1" source="a6" target="sys"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

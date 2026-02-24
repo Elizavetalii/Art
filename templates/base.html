@@ -62,15 +62,25 @@
         </div>
 
         {% if messages %}
-          <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100;">
+          <div class="notify-stack" aria-live="polite" aria-atomic="true">
             {% for message in messages %}
-              <div class="toast align-items-center text-bg-{% if 'success' in message.tags %}success{% elif 'error' in message.tags or 'danger' in message.tags %}danger{% elif 'warning' in message.tags %}warning{% else %}info{% endif %} border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4500">
-                <div class="d-flex">
-                  <div class="toast-body">
-                    {{ message }}
-                  </div>
-                  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+              <div
+                class="notify-card"
+                role="status"
+                data-delay="5200"
+                data-level="{% if 'success' in message.tags %}success{% elif 'error' in message.tags or 'danger' in message.tags %}danger{% elif 'warning' in message.tags %}warning{% else %}info{% endif %}"
+              >
+                <div class="notify-icon">
+                  {% if 'success' in message.tags %}✔{% elif 'error' in message.tags or 'danger' in message.tags %}✖{% elif 'warning' in message.tags %}!{% else %}i{% endif %}
                 </div>
+                <div class="notify-content">
+                  <div class="notify-title">
+                    {% if 'success' in message.tags %}Успешно{% elif 'error' in message.tags or 'danger' in message.tags %}Ошибка{% elif 'warning' in message.tags %}Внимание{% else %}Сообщение{% endif %}
+                  </div>
+                  <div class="notify-text">{{ message }}</div>
+                </div>
+                <button type="button" class="notify-close" aria-label="Закрыть">×</button>
+                <div class="notify-progress"></div>
               </div>
             {% endfor %}
           </div>
@@ -111,9 +121,23 @@
   </script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(".toast").forEach((toastEl) => {
-        const t = new bootstrap.Toast(toastEl);
-        t.show();
+      const cards = document.querySelectorAll(".notify-card");
+      cards.forEach((card, index) => {
+        const delay = parseInt(card.dataset.delay || "5000", 10);
+        card.style.animationDelay = `${index * 80}ms`;
+        card.classList.add("is-visible");
+
+        const closeBtn = card.querySelector(".notify-close");
+        const closeCard = () => {
+          card.classList.remove("is-visible");
+          card.classList.add("is-hiding");
+          window.setTimeout(() => card.remove(), 260);
+        };
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", closeCard);
+        }
+        window.setTimeout(closeCard, delay);
       });
     });
   </script>

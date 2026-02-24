@@ -1,0 +1,567 @@
+<mxfile host="app.diagrams.net" modified="2026-02-22T22:10:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="tb-a0-context" name="A0 Контекст (TO-BE)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#efefe3;strokeColor=#efefe3;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1600" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" value="Автоматизированное управление продажами, заказами и доставкой" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f8f8;strokeColor=#444444;strokeWidth=1.5;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="430" y="300" width="840" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="a0" value="A0" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=bottom;fontSize=28;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="490" width="50" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl1" value="Инструкции по работе с клиентами" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="460" y="90" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl2" value="Политика продаж" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="840" y="90" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl3" value="Регламенты управления запасами" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="90" width="420" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="in1" value="Спрос клиентов" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="40" y="340" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="in2" value="Наличие товаров" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mech1" value="Менеджер" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="620" y="740" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mech2" value="Логист" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="780" y="740" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="mech3" value="CRM-система" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="940" y="740" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="out1" value="Отчеты о продажах" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="360" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="out2" value="Статусы заказов и доставок" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=24;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="420" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl1" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl2" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl3" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="in1" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="in2" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="mech1" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="mech2" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="mech3" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="p1" target="out1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="p1" target="out2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="tb-a0-decomp" name="A0 Декомпозиция (TO-BE)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#efefe3;strokeColor=#efefe3;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1800" height="980" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="Обработать заявку клиента A1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="240" y="290" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="Оформить продажу и оплату A2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="580" y="290" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="Сформировать отчеты и оповещения A3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="900" y="290" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" value="Управлять запасами и доставкой A4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="290" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="in1" value="Спрос клиентов" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="20" y="315" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="in2" value="Наличие товаров" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="20" y="365" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="out1" value="Отчеты о продажах" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="315" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="out2" value="Статусы заказов и доставок" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="365" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl1" value="Инструкции по работе с клиентами" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="430" y="90" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl2" value="Политика продаж" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="810" y="90" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl3" value="Регламенты управления запасами" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="90" width="380" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="Менеджер" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="620" y="700" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="Логист" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="790" y="700" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m3" value="CRM-система" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="940" y="700" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="f1" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="in1" target="a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="in2" target="a4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a1" target="a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a2" target="a3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a3" target="a4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f6" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a3" target="out1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f7" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a4" target="out2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f8" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl1" target="a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f9" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl2" target="a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f10" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl2" target="a3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f11" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl3" target="a4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f12" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m1" target="a1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f13" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m1" target="a2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f14" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m3" target="a3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="f15" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m2" target="a4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tb_l12" value="Согласованная корзина" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="520" y="220" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tb_l23" value="События продаж и оплат" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="820" y="220" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tb_l34" value="План потребления запасов" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="220" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tb_l42" value="Актуальные остатки" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="420" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tb_l31" value="Аналитика спроса и предпочтений" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="640" y="420" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tb_f16" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a4" target="a2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1400" y="205" />
+              <mxPoint x="700" y="205" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tb_f17" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a3" target="a1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="175" />
+              <mxPoint x="360" y="175" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="tb-a1" name="A1 Декомпозиция (TO-BE)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#efefe3;strokeColor=#efefe3;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1800" height="980" as="geometry" />
+        </mxCell>
+        <mxCell id="a11" value="Идентифицировать клиента A11" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="220" y="300" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a12" value="Подобрать позиции A12" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="620" y="300" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a13" value="Согласовать выбор A13" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="300" width="230" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="in1" value="Спрос клиентов" style="text;html=1;strokeColor=none;fillColor=none;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="20" y="335" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="out1" value="Согласованная корзина" style="text;html=1;strokeColor=none;fillColor=none;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="335" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl1" value="Инструкции по работе с клиентами" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="360" y="90" width="340" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl2" value="Политика продаж" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="760" y="90" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="Менеджер" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="560" y="700" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="CRM-система" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="760" y="700" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="in1" target="a11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a11" target="a12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a12" target="a13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a13" target="out1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl1" target="a11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl2" target="a12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl2" target="a13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m1" target="a11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m2" target="a12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m1" target="a13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="in2" value="Аналитика спроса и предпочтений" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="20" y="385" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="in2" target="a12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="tb-a2" name="A2 Декомпозиция (TO-BE)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#efefe3;strokeColor=#efefe3;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1900" height="980" as="geometry" />
+        </mxCell>
+        <mxCell id="a21" value="Проверить условия заказа A21" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="220" y="300" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a22" value="Рассчитать стоимость A22" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="580" y="300" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a23" value="Провести оплату A23" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="920" y="300" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a24" value="Зафиксировать продажу и выдать чек A24" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="300" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="in1" value="Согласованная корзина" style="text;html=1;strokeColor=none;fillColor=none;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="20" y="335" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="out1" value="События продаж и оплат" style="text;html=1;strokeColor=none;fillColor=none;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="335" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl1" value="Политика продаж" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="620" y="90" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl2" value="Инструкции по учету" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="860" y="90" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="Менеджер" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="660" y="700" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="CRM-система" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="860" y="700" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="in1" target="a21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a21" target="a22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a22" target="a23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a23" target="a24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a24" target="out1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl1" target="a21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl1" target="a22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl2" target="a23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl2" target="a24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m1" target="a21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m1" target="a23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m2" target="a22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m2" target="a24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="in2" value="Актуальные остатки" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="20" y="385" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="in2" target="a21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="tb-a3" name="A3 Декомпозиция (TO-BE)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#efefe3;strokeColor=#efefe3;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1900" height="980" as="geometry" />
+        </mxCell>
+        <mxCell id="a31" value="Собрать данные о продажах A31" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="200" y="300" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a32" value="Обработать данные A32" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="540" y="300" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a33" value="Сформировать отчеты A33" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="880" y="300" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a34" value="Отправить уведомления A34" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="300" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="in1" value="События продаж и оплат" style="text;html=1;strokeColor=none;fillColor=none;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="20" y="335" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="out1" value="Отчеты о продажах" style="text;html=1;strokeColor=none;fillColor=none;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="335" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl1" value="Политика продаж" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="620" y="90" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl2" value="Инструкции по учету" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="860" y="90" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="Менеджер" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="660" y="700" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="CRM-система" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="860" y="700" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="in1" target="a31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a31" target="a32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a32" target="a33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a33" target="a34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a34" target="out1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl2" target="a31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl2" target="a32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl1" target="a33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl1" target="a34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m2" target="a31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m2" target="a32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m2" target="a33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m1" target="a34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="out2" value="План потребления запасов" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="380" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="out3" value="Аналитика спроса и предпочтений" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="425" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a34" target="out2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a34" target="out3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="tb-a4" name="A4 Декомпозиция (TO-BE)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#efefe3;strokeColor=#efefe3;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1900" height="980" as="geometry" />
+        </mxCell>
+        <mxCell id="a41" value="Проверить наличие запасов A41" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="180" y="300" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a42" value="Рассчитать потребность в пополнении A42" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="500" y="300" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a43" value="Сформировать заказ поставщику A43" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="820" y="300" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a44" value="Спланировать маршрут доставки A44" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="300" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="a45" value="Обновить остатки и статусы A45" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="1520" y="300" width="220" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="in1" value="Наличие товаров" style="text;html=1;strokeColor=none;fillColor=none;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="20" y="325" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="in2" value="План потребления запасов" style="text;html=1;strokeColor=none;fillColor=none;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="20" y="375" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="out1" value="Статусы заказов и доставок" style="text;html=1;strokeColor=none;fillColor=none;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="335" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl1" value="Регламенты управления запасами" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="620" y="90" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ctl2" value="SLA и регламенты логистики" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="90" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="Логист" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="700" y="700" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m2" value="CRM-система" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="880" y="700" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m3" value="Складское оборудование" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="700" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="in1" target="a41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="in2" target="a44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a41" target="a42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a42" target="a43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a43" target="a44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a44" target="a45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a45" target="out1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl1" target="a41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl1" target="a42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl1" target="a43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl2" target="a44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="ctl2" target="a45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m3" target="a41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m2" target="a42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m2" target="a43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m1" target="a44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="m2" target="a45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="out2" value="Актуальные остатки" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="380" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;curved=0;" edge="1" parent="1" source="a45" target="out2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,306 @@
+<mxfile host="app.diagrams.net" modified="2026-02-22T23:20:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="as-a0-context" name="A0 Контекст (AS-IS)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#efefe3;strokeColor=#efefe3;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1800" height="980" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="a0" value="Выполнять продажу и доставку&#xa;готовой еды клиентам" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f8f8;strokeColor=#444444;strokeWidth=1.5;fontSize=30;" vertex="1" parent="1">
+          <mxGeometry x="450" y="300" width="900" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="a0lbl" value="A0" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=bottom;fontSize=28;" vertex="1" parent="1">
+          <mxGeometry x="1270" y="490" width="60" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ctl1" value="Договорные условия с клиентами" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=22;" vertex="1" parent="1"><mxGeometry x="350" y="90" width="360" height="30" as="geometry"/></mxCell>
+        <mxCell id="ctl2" value="Прайс и коммерческая политика" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=22;" vertex="1" parent="1"><mxGeometry x="730" y="90" width="320" height="30" as="geometry"/></mxCell>
+        <mxCell id="ctl3" value="Санитарные требования и сроки годности" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=22;" vertex="1" parent="1"><mxGeometry x="1060" y="90" width="420" height="30" as="geometry"/></mxCell>
+        <mxCell id="ctl4" value="Регламенты отгрузки и документооборота" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=22;" vertex="1" parent="1"><mxGeometry x="1380" y="90" width="380" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="in1" value="Заявки клиентов на готовую еду" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=22;" vertex="1" parent="1"><mxGeometry x="30" y="360" width="360" height="30" as="geometry"/></mxCell>
+        <mxCell id="in2" value="Наличие готовой продукции на складе" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=22;" vertex="1" parent="1"><mxGeometry x="30" y="430" width="380" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="out1" value="Отгруженные заказы" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=22;" vertex="1" parent="1"><mxGeometry x="1380" y="340" width="280" height="30" as="geometry"/></mxCell>
+        <mxCell id="out2" value="Сопроводительные документы" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=22;" vertex="1" parent="1"><mxGeometry x="1380" y="400" width="320" height="30" as="geometry"/></mxCell>
+        <mxCell id="out3" value="Сводный отчет о продажах" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=22;" vertex="1" parent="1"><mxGeometry x="1380" y="460" width="320" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="m1" value="Менеджер по продажам" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=22;" vertex="1" parent="1"><mxGeometry x="500" y="760" width="240" height="30" as="geometry"/></mxCell>
+        <mxCell id="m2" value="Диспетчер/логист" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=22;" vertex="1" parent="1"><mxGeometry x="760" y="760" width="220" height="30" as="geometry"/></mxCell>
+        <mxCell id="m3" value="Кладовщик" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=22;" vertex="1" parent="1"><mxGeometry x="990" y="760" width="150" height="30" as="geometry"/></mxCell>
+        <mxCell id="m4" value="Бумажные журналы" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=22;" vertex="1" parent="1"><mxGeometry x="1160" y="760" width="220" height="30" as="geometry"/></mxCell>
+        <mxCell id="m5" value="Электронные таблицы (Excel)" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=22;" vertex="1" parent="1"><mxGeometry x="1380" y="760" width="330" height="30" as="geometry"/></mxCell>
+        <mxCell id="m6" value="Телефон/электронная почта" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=22;" vertex="1" parent="1"><mxGeometry x="200" y="760" width="290" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="ctl1" target="a0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="ctl2" target="a0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="ctl3" target="a0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="ctl4" target="a0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="in1" target="a0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="in2" target="a0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="a0" target="out1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="a0" target="out2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="a0" target="out3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="m1" target="a0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="m2" target="a0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="m3" target="a0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="m4" target="a0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="m5" target="a0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e15" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="m6" target="a0"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="as-a0-decomp" name="A0 Декомпозиция (AS-IS)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#efefe3;strokeColor=#efefe3;" vertex="1" parent="1"><mxGeometry x="0" y="0" width="1900" height="980" as="geometry"/></mxCell>
+
+        <mxCell id="a1" value="Принять и согласовать&#xa;заказ клиента&#xa;A1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="260" y="280" width="260" height="120" as="geometry"/></mxCell>
+        <mxCell id="a2" value="Подготовить и оформить&#xa;отгрузку&#xa;A2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="620" y="280" width="250" height="120" as="geometry"/></mxCell>
+        <mxCell id="a3" value="Выполнить доставку и&#xa;закрыть документы&#xa;A3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="980" y="280" width="260" height="120" as="geometry"/></mxCell>
+        <mxCell id="a4" value="Свести учет и&#xa;сформировать отчетность&#xa;A4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="1340" y="280" width="280" height="120" as="geometry"/></mxCell>
+
+        <mxCell id="in1" value="Заявки клиентов на готовую еду" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="20" y="300" width="260" height="30" as="geometry"/></mxCell>
+        <mxCell id="in2" value="Наличие готовой продукции на складе" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="20" y="350" width="300" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="o1" value="Отгруженные заказы" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1660" y="300" width="220" height="30" as="geometry"/></mxCell>
+        <mxCell id="o2" value="Сопроводительные документы" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1660" y="350" width="240" height="30" as="geometry"/></mxCell>
+        <mxCell id="o3" value="Сводный отчет о продажах" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1660" y="400" width="240" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="ctl1" value="Договорные условия с клиентами" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="240" y="80" width="300" height="30" as="geometry"/></mxCell>
+        <mxCell id="ctl2" value="Прайс и коммерческая политика" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="580" y="80" width="300" height="30" as="geometry"/></mxCell>
+        <mxCell id="ctl3" value="Санитарные требования и сроки годности" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="900" y="80" width="370" height="30" as="geometry"/></mxCell>
+        <mxCell id="ctl4" value="Регламенты отгрузки и документооборота" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1290" y="80" width="360" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="m1" value="Менеджер по продажам" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="380" y="720" width="220" height="30" as="geometry"/></mxCell>
+        <mxCell id="m2" value="Диспетчер/логист" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="650" y="720" width="200" height="30" as="geometry"/></mxCell>
+        <mxCell id="m3" value="Кладовщик" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="880" y="720" width="130" height="30" as="geometry"/></mxCell>
+        <mxCell id="m4" value="Бумажные журналы" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1030" y="720" width="180" height="30" as="geometry"/></mxCell>
+        <mxCell id="m5" value="Электронные таблицы (Excel)" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1230" y="720" width="280" height="30" as="geometry"/></mxCell>
+        <mxCell id="m6" value="Телефон/электронная почта" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1520" y="720" width="260" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="f12t" value="Согласованный заказ" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="540" y="245" width="160" height="30" as="geometry"/></mxCell>
+        <mxCell id="f23t" value="Заказ к отгрузке" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="900" y="245" width="150" height="30" as="geometry"/></mxCell>
+        <mxCell id="f34t" value="Данные по отгруженным заказам" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="1240" y="245" width="220" height="30" as="geometry"/></mxCell>
+        <mxCell id="f41t" value="Сводка спроса и возвратов" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="700" y="450" width="220" height="30" as="geometry"/></mxCell>
+        <mxCell id="f42t" value="Актуальные остатки готовой продукции" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="980" y="450" width="280" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="in1" target="a1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="in2" target="a2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="a1" target="a2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="a2" target="a3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="a3" target="a4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="a3" target="o1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="a3" target="o2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="a4" target="o3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="a4" target="a1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1480" y="210"/><mxPoint x="390" y="210"/></Array></mxGeometry></mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="a4" target="a2"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1480" y="240"/><mxPoint x="740" y="240"/></Array></mxGeometry></mxCell>
+
+        <mxCell id="e11" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="ctl1" target="a1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="ctl2" target="a1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="ctl3" target="a2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="ctl4" target="a2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e15" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="ctl4" target="a3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e16" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="ctl4" target="a4"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e17" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="m1" target="a1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e18" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="m3" target="a2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e19" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="m2" target="a3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e20" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="m4" target="a4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e21" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="m5" target="a2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e22" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=24;" edge="1" parent="1" source="m6" target="a1"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="as-a1" name="A1 Декомпозиция (AS-IS)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#efefe3;strokeColor=#efefe3;" vertex="1" parent="1"><mxGeometry x="0" y="0" width="1900" height="980" as="geometry"/></mxCell>
+
+        <mxCell id="a11" value="Принять заявку&#xa;клиента&#xa;A11" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="240" y="300" width="210" height="110" as="geometry"/></mxCell>
+        <mxCell id="a12" value="Уточнить состав и&#xa;объем заказа&#xa;A12" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="560" y="300" width="230" height="110" as="geometry"/></mxCell>
+        <mxCell id="a13" value="Проверить доступность&#xa;продукции&#xa;A13" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="900" y="300" width="230" height="110" as="geometry"/></mxCell>
+        <mxCell id="a14" value="Согласовать условия и&#xa;срок доставки&#xa;A14" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="1240" y="300" width="240" height="110" as="geometry"/></mxCell>
+
+        <mxCell id="in1" value="Заявки клиентов на готовую еду" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="20" y="330" width="250" height="30" as="geometry"/></mxCell>
+        <mxCell id="in2" value="Сводка спроса и возвратов" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="20" y="390" width="220" height="30" as="geometry"/></mxCell>
+        <mxCell id="out" value="Согласованный заказ" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1520" y="335" width="180" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="ctl1" value="Договорные условия с клиентами" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="360" y="90" width="300" height="30" as="geometry"/></mxCell>
+        <mxCell id="ctl2" value="Прайс и коммерческая политика" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="760" y="90" width="290" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="m1" value="Менеджер по продажам" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="560" y="700" width="220" height="30" as="geometry"/></mxCell>
+        <mxCell id="m2" value="Телефон/электронная почта" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="800" y="700" width="240" height="30" as="geometry"/></mxCell>
+        <mxCell id="m3" value="Бумажный журнал заявок" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1040" y="700" width="220" height="30" as="geometry"/></mxCell>
+        <mxCell id="m4" value="Excel-файл заказов" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1270" y="700" width="170" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="t12" value="Карточка заявки" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="460" y="260" width="140" height="30" as="geometry"/></mxCell>
+        <mxCell id="t23" value="Требования к заказу" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="810" y="260" width="160" height="30" as="geometry"/></mxCell>
+        <mxCell id="t34" value="Предварительный состав" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="1140" y="260" width="180" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="in1" target="a11"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="in2" target="a12"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a11" target="a12"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a12" target="a13"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a13" target="a14"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a14" target="out"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e7" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="ctl1" target="a11"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="ctl2" target="a13"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m1" target="a14"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m2" target="a11"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m3" target="a11"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m4" target="a13"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="as-a2" name="A2 Декомпозиция (AS-IS)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#efefe3;strokeColor=#efefe3;" vertex="1" parent="1"><mxGeometry x="0" y="0" width="1900" height="980" as="geometry"/></mxCell>
+
+        <mxCell id="a21" value="Проверить остатки и&#xa;сроки годности&#xa;A21" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="220" y="300" width="230" height="110" as="geometry"/></mxCell>
+        <mxCell id="a22" value="Скомплектовать заказ&#xa;на складе&#xa;A22" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="560" y="300" width="220" height="110" as="geometry"/></mxCell>
+        <mxCell id="a23" value="Оформить отгрузочные&#xa;документы&#xa;A23" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="900" y="300" width="230" height="110" as="geometry"/></mxCell>
+        <mxCell id="a24" value="Передать заказ&#xa;в доставку&#xa;A24" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="1240" y="300" width="220" height="110" as="geometry"/></mxCell>
+
+        <mxCell id="in1" value="Согласованный заказ" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="20" y="330" width="180" height="30" as="geometry"/></mxCell>
+        <mxCell id="in2" value="Актуальные остатки готовой продукции" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="20" y="390" width="280" height="30" as="geometry"/></mxCell>
+        <mxCell id="out1" value="Заказ к отгрузке" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1510" y="330" width="170" height="30" as="geometry"/></mxCell>
+        <mxCell id="out2" value="Сопроводительные документы" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1510" y="390" width="220" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="ctl1" value="Санитарные требования и сроки годности" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="480" y="90" width="360" height="30" as="geometry"/></mxCell>
+        <mxCell id="ctl2" value="Регламенты отгрузки и документооборота" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="900" y="90" width="360" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="m1" value="Кладовщик" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="560" y="700" width="130" height="30" as="geometry"/></mxCell>
+        <mxCell id="m2" value="Менеджер по продажам" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="700" y="700" width="220" height="30" as="geometry"/></mxCell>
+        <mxCell id="m3" value="Бумажные накладные" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="940" y="700" width="190" height="30" as="geometry"/></mxCell>
+        <mxCell id="m4" value="Журнал отгрузок" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1140" y="700" width="160" height="30" as="geometry"/></mxCell>
+        <mxCell id="m5" value="Excel по остаткам" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1320" y="700" width="170" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="t12" value="Проверенный состав" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="460" y="260" width="160" height="30" as="geometry"/></mxCell>
+        <mxCell id="t23" value="Скомплектованный заказ" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="790" y="260" width="190" height="30" as="geometry"/></mxCell>
+        <mxCell id="t34" value="Сопроводительные документы" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="1130" y="260" width="220" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="in1" target="a21"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="in2" target="a21"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a21" target="a22"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a22" target="a23"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a23" target="a24"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a24" target="out1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a23" target="out2"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e8" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="ctl1" target="a21"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="ctl2" target="a23"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m1" target="a22"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m2" target="a23"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m3" target="a23"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m4" target="a24"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m5" target="a21"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="as-a3" name="A3 Декомпозиция (AS-IS)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#efefe3;strokeColor=#efefe3;" vertex="1" parent="1"><mxGeometry x="0" y="0" width="1900" height="980" as="geometry"/></mxCell>
+
+        <mxCell id="a31" value="Сформировать маршрут&#xa;доставки&#xa;A31" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="210" y="300" width="220" height="110" as="geometry"/></mxCell>
+        <mxCell id="a32" value="Передать заказ&#xa;водителю/курьеру&#xa;A32" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="540" y="300" width="230" height="110" as="geometry"/></mxCell>
+        <mxCell id="a33" value="Выполнить доставку&#xa;клиенту&#xa;A33" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="890" y="300" width="210" height="110" as="geometry"/></mxCell>
+        <mxCell id="a34" value="Подтвердить получение и&#xa;закрыть доставку&#xa;A34" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="1210" y="300" width="250" height="110" as="geometry"/></mxCell>
+
+        <mxCell id="in1" value="Заказ к отгрузке" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="20" y="330" width="180" height="30" as="geometry"/></mxCell>
+        <mxCell id="in2" value="Сопроводительные документы" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="20" y="390" width="220" height="30" as="geometry"/></mxCell>
+        <mxCell id="out1" value="Данные по отгруженным заказам" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1510" y="330" width="240" height="30" as="geometry"/></mxCell>
+        <mxCell id="out2" value="Подтверждение доставки" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1510" y="390" width="220" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="ctl1" value="Регламент доставки" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="620" y="90" width="190" height="30" as="geometry"/></mxCell>
+        <mxCell id="ctl2" value="Временные окна клиентов" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="870" y="90" width="230" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="m1" value="Диспетчер/логист" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="640" y="700" width="190" height="30" as="geometry"/></mxCell>
+        <mxCell id="m2" value="Водитель/курьер" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="860" y="700" width="170" height="30" as="geometry"/></mxCell>
+        <mxCell id="m3" value="Телефон/мессенджеры" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1040" y="700" width="210" height="30" as="geometry"/></mxCell>
+        <mxCell id="m4" value="Бумажный маршрутный лист" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1260" y="700" width="230" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="t12" value="Маршрут доставки" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="440" y="260" width="150" height="30" as="geometry"/></mxCell>
+        <mxCell id="t23" value="Переданный заказ" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="790" y="260" width="140" height="30" as="geometry"/></mxCell>
+        <mxCell id="t34" value="Факт доставки" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="1120" y="260" width="120" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="in1" target="a31"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="in2" target="a32"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a31" target="a32"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a32" target="a33"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a33" target="a34"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a34" target="out1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a34" target="out2"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e8" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="ctl1" target="a31"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="ctl2" target="a33"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m1" target="a31"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m2" target="a33"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m3" target="a34"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m4" target="a31"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  <diagram id="as-a4" name="A4 Декомпозиция (AS-IS)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="980" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#efefe3;strokeColor=#efefe3;" vertex="1" parent="1"><mxGeometry x="0" y="0" width="1900" height="980" as="geometry"/></mxCell>
+
+        <mxCell id="a41" value="Обновить остатки&#xa;готовой продукции&#xa;A41" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="220" y="300" width="220" height="110" as="geometry"/></mxCell>
+        <mxCell id="a42" value="Зафиксировать продажи&#xa;и возвраты&#xa;A42" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="560" y="300" width="220" height="110" as="geometry"/></mxCell>
+        <mxCell id="a43" value="Сформировать&#xa;сводный отчет&#xa;A43" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="900" y="300" width="220" height="110" as="geometry"/></mxCell>
+        <mxCell id="a44" value="Передать данные&#xa;руководителю&#xa;A44" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f3f3f3;strokeColor=#333333;" vertex="1" parent="1"><mxGeometry x="1240" y="300" width="220" height="110" as="geometry"/></mxCell>
+
+        <mxCell id="in1" value="Данные по отгруженным заказам" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="20" y="330" width="240" height="30" as="geometry"/></mxCell>
+        <mxCell id="in2" value="Подтверждение доставки" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="20" y="390" width="200" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="out1" value="Сводный отчет о продажах" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1510" y="300" width="240" height="30" as="geometry"/></mxCell>
+        <mxCell id="out2" value="Актуальные остатки готовой продукции" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1510" y="350" width="290" height="30" as="geometry"/></mxCell>
+        <mxCell id="out3" value="Сводка спроса и возвратов" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1510" y="400" width="230" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="ctl1" value="Инструкции по учету" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="620" y="90" width="180" height="30" as="geometry"/></mxCell>
+        <mxCell id="ctl2" value="Формы отчетности" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="840" y="90" width="180" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="m1" value="Менеджер по продажам" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="620" y="700" width="220" height="30" as="geometry"/></mxCell>
+        <mxCell id="m2" value="Бухгалтер/оператор учета" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="860" y="700" width="260" height="30" as="geometry"/></mxCell>
+        <mxCell id="m3" value="Бумажные журналы" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1130" y="700" width="180" height="30" as="geometry"/></mxCell>
+        <mxCell id="m4" value="Excel-таблицы" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;" vertex="1" parent="1"><mxGeometry x="1320" y="700" width="140" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="t12" value="Обновленные остатки" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="460" y="260" width="170" height="30" as="geometry"/></mxCell>
+        <mxCell id="t23" value="Реестр продаж и возвратов" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="790" y="260" width="210" height="30" as="geometry"/></mxCell>
+        <mxCell id="t34" value="Сводный отчет" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;" vertex="1" parent="1"><mxGeometry x="1130" y="260" width="120" height="30" as="geometry"/></mxCell>
+
+        <mxCell id="e1" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="in1" target="a42"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="in2" target="a42"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a41" target="a42"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a42" target="a43"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a43" target="a44"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a44" target="out1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a41" target="out2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="a43" target="out3"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e9" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="ctl1" target="a42"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="ctl2" target="a43"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m1" target="a41"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m2" target="a43"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m3" target="a42"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14" style="endArrow=classic;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;jettySize=24;" edge="1" parent="1" source="m4" target="a41"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,7 +1,7 @@
 from django import forms
 from django.conf import settings
 from crm.forms import BootstrapFormMixin
-from crm.models import Delivery, Route, RouteStop, CourierAssignment, LogisticianProfile
+from crm.models import Delivery, Route, RouteStop, CourierAssignment, LogisticianProfile, Courier
 
 
 class DeliveryForm(BootstrapFormMixin, forms.ModelForm):
@@ -218,3 +218,32 @@ class LogisticianProfileForm(BootstrapFormMixin, forms.ModelForm):
 
     def clean_transport_types(self):
         return self.cleaned_data.get("transport_types") or []
+
+
+class CourierProfileForm(BootstrapFormMixin, forms.ModelForm):
+    class Meta:
+        model = Courier
+        fields = [
+            "transport_type",
+            "payload_capacity_kg",
+            "cargo_volume_m3",
+            "cargo_length_cm",
+            "cargo_width_cm",
+            "cargo_height_cm",
+            "zone",
+            "experience_years",
+        ]
+        labels = {
+            "transport_type": "Тип транспорта",
+            "payload_capacity_kg": "Грузоподъёмность (кг)",
+            "cargo_volume_m3": "Объём кузова (м³)",
+            "cargo_length_cm": "Длина кузова (см)",
+            "cargo_width_cm": "Ширина кузова (см)",
+            "cargo_height_cm": "Высота кузова (см)",
+            "zone": "Зона",
+            "experience_years": "Опыт (лет)",
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._init_bootstrap()

@@ -260,6 +260,132 @@ a:hover { color: var(--primary-2); }
   color: var(--text-muted);
 }
 
+.notify-stack {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 1200;
+  display: grid;
+  gap: 10px;
+  width: min(92vw, 390px);
+}
+
+.notify-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.22);
+  display: grid;
+  grid-template-columns: 34px 1fr 26px;
+  gap: 10px;
+  align-items: start;
+  padding: 12px 12px 14px 12px;
+  transform: translateX(22px);
+  opacity: 0;
+  transition: transform 0.26s ease, opacity 0.26s ease;
+}
+
+.notify-card[data-level="success"] {
+  background: linear-gradient(135deg, rgba(22, 163, 74, 0.95), rgba(5, 150, 105, 0.86));
+  color: #f0fff7;
+}
+
+.notify-card[data-level="danger"] {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.95), rgba(190, 24, 93, 0.9));
+  color: #fff3f3;
+}
+
+.notify-card[data-level="warning"] {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.98), rgba(217, 119, 6, 0.94));
+  color: #fff8ed;
+}
+
+.notify-card[data-level="info"] {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(59, 130, 246, 0.88));
+  color: #eff6ff;
+}
+
+.notify-card.is-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.notify-card.is-hiding {
+  transform: translateX(24px);
+  opacity: 0;
+}
+
+.notify-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.notify-title {
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  opacity: 0.92;
+}
+
+.notify-text {
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.notify-close {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  font-size: 18px;
+  line-height: 1;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.notify-close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  opacity: 1;
+}
+
+.notify-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.35);
+  transform-origin: left center;
+  animation: notify-progress 5.2s linear forwards;
+}
+
+@keyframes notify-progress {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+@media (max-width: 640px) {
+  .notify-stack {
+    top: 12px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+  }
+}
+
 .table > :not(caption) > * > * {
   background-color: var(--table-row);
   color: var(--text);

@@ -1,0 +1,138 @@
+<mxfile host="app.diagrams.net" modified="2026-02-22T19:40:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="testing-scheme" name="Схема тестирования">
+    <mxGraphModel dx="2200" dy="1400" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2800" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0b1220;strokeColor=#0b1220;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="2800" height="1700" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="title" value="Схема тестирования Art Culinary CRM (Django + PostgreSQL)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontStyle=1;fontSize=26;fontColor=#e5e7eb;" vertex="1" parent="1">
+          <mxGeometry x="620" y="30" width="1560" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="core" value="Стратегия тестирования\nрелиза" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#93c5fd;fillColor=#111827;fontColor=#f9fafb;fontStyle=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="120" width="480" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b_auto" value="Автоматизация" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#7dd3fc;fillColor=#0b2b3c;fontColor=#e0f2fe;fontStyle=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="300" width="900" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_auto_1" value="Unit/Service-тесты\nOrder.generate_order_number,\nOrder.recalc_total,\nDelivery.save, RouteStop.save" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#67e8f9;fillColor=#082f49;fontColor=#ecfeff;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="350" width="270" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_auto_2" value="API-тесты (Django/DRF)\nCRUD, статусы, права\norders/clients/logistics/reports" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#67e8f9;fillColor=#082f49;fontColor=#ecfeff;" vertex="1" parent="1">
+          <mxGeometry x="2070" y="350" width="270" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_auto_3" value="CI/CD\npytest + линтеры + отчеты\nрегресс перед релизом" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#67e8f9;fillColor=#082f49;fontColor=#ecfeff;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="350" width="260" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b_sec" value="Безопасность" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#f9a8d4;fillColor=#3a1025;fontColor=#fce7f3;fontStyle=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="560" width="900" height="360" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_sec_1" value="RBAC\nроль/доступ к URL и API\nменеджер, логист,\nкурьер, сборщик, админ" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#fbcfe8;fillColor=#4a1332;fontColor=#fff1f2;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="620" width="270" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_sec_2" value="Защита ввода\nSQLi/XSS/CSRF\nвалидация форм и файлов" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#fbcfe8;fillColor=#4a1332;fontColor=#fff1f2;" vertex="1" parent="1">
+          <mxGeometry x="2070" y="620" width="270" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_sec_3" value="Конфигурация\nDEBUG=False\nALLOWED_HOSTS\nSecure cookies" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#fbcfe8;fillColor=#4a1332;fontColor=#fff1f2;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="620" width="260" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_sec_4" value="Аудит\nлогирование критичных\nизменений и действий" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#fbcfe8;fillColor=#4a1332;fontColor=#fff1f2;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="760" width="840" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b_func" value="Функциональное тестирование" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#93c5fd;fillColor=#1e3a8a;fontColor=#eff6ff;fontStyle=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="140" y="300" width="740" height="500" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_func_1" value="Клиенты\nCRUD + контакты + этапы" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#bfdbfe;fillColor=#1d4ed8;fontColor=#eff6ff;" vertex="1" parent="1">
+          <mxGeometry x="180" y="360" width="320" height="95" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_func_2" value="Заказы\nсоздание/редактирование/архив\nмассовые операции" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#bfdbfe;fillColor=#1d4ed8;fontColor=#eff6ff;" vertex="1" parent="1">
+          <mxGeometry x="520" y="360" width="320" height="95" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_func_3" value="Бизнес-правила\nавто-номер заказа\nдата доставки не в прошлом" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#bfdbfe;fillColor=#1d4ed8;fontColor=#eff6ff;" vertex="1" parent="1">
+          <mxGeometry x="180" y="475" width="320" height="95" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_func_4" value="Производство\nингредиенты, резервы,\nограничения мощностей" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#bfdbfe;fillColor=#1d4ed8;fontColor=#eff6ff;" vertex="1" parent="1">
+          <mxGeometry x="520" y="475" width="320" height="95" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_func_5" value="Логистика\nмаршруты, остановки,\nстатусы, proof-документы" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#bfdbfe;fillColor=#1d4ed8;fontColor=#eff6ff;" vertex="1" parent="1">
+          <mxGeometry x="180" y="590" width="320" height="95" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_func_6" value="Отчеты\nформирование,\nвалидация, выгрузка" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#bfdbfe;fillColor=#1d4ed8;fontColor=#eff6ff;" vertex="1" parent="1">
+          <mxGeometry x="520" y="590" width="320" height="95" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b_load" value="Нагрузочное тестирование" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#fcd34d;fillColor=#713f12;fontColor=#fef3c7;fontStyle=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="140" y="840" width="740" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_load_1" value="Профиль нагрузки (Locust)\nсписки заказов + фильтры\nсоздание заказа\nобновление статусов доставки" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#fde68a;fillColor=#854d0e;fontColor=#fffbeb;" vertex="1" parent="1">
+          <mxGeometry x="180" y="900" width="320" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_load_2" value="Пакетные операции\nмассовое удаление/архив\nобновление остановок\nвысокая конкурентность" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#fde68a;fillColor=#854d0e;fontColor=#fffbeb;" vertex="1" parent="1">
+          <mxGeometry x="520" y="900" width="320" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_load_3" value="Метрики\np95/p99 latency, RPS,\n5xx/4xx, CPU/RAM, DB locks" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#fde68a;fillColor=#854d0e;fontColor=#fffbeb;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1040" width="320" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b_int" value="Интеграционное тестирование" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#86efac;fillColor=#14532d;fontColor=#ecfdf5;fontStyle=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="950" y="980" width="760" height="320" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_int_1" value="clients ↔ orders\norders ↔ reservations\norders ↔ logistics" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#bbf7d0;fillColor=#166534;fontColor=#ecfdf5;" vertex="1" parent="1">
+          <mxGeometry x="990" y="1040" width="220" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_int_2" value="SMTP\nвосстановление пароля\nemail-уведомления" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#bbf7d0;fillColor=#166534;fontColor=#ecfdf5;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="1040" width="220" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_int_3" value="Файлы\nproof/report\nupload/download" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#bbf7d0;fillColor=#166534;fontColor=#ecfdf5;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="1160" width="220" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_int_4" value="Сквозной сценарий\nзаказ → сборка → доставка → отчет" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#bbf7d0;fillColor=#166534;fontColor=#ecfdf5;" vertex="1" parent="1">
+          <mxGeometry x="1470" y="1040" width="220" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b_chaos" value="Отказоустойчивость" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#c4b5fd;fillColor=#312e81;fontColor=#eef2ff;fontStyle=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="960" width="900" height="340" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_chaos_1" value="Сбой SMTP\nкорректная ошибка\nповторная отправка" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#ddd6fe;fillColor=#4338ca;fontColor=#eef2ff;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="1020" width="270" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_chaos_2" value="Сбой БД/транзакции\nrollback\nбез частично сохраненных данных" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#ddd6fe;fillColor=#4338ca;fontColor=#eef2ff;" vertex="1" parent="1">
+          <mxGeometry x="2070" y="1020" width="270" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_chaos_3" value="Сбой в доставке\nконсистентные статусы\nбез дублей операций" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#ddd6fe;fillColor=#4338ca;fontColor=#eef2ff;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="1020" width="260" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_chaos_4" value="Backup / Restore\nвосстановление БД\nпроверка целостности" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#ddd6fe;fillColor=#4338ca;fontColor=#eef2ff;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="1150" width="840" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="release" value="Критерии готовности релиза\n• 0 критических дефектов\n• все обязательные тесты пройдены\n• KPI нагрузки в норме\n• нет High/Critical уязвимостей" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#34d399;fillColor=#052e16;fontColor=#d1fae5;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="1370" width="740" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- connectors -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#93c5fd;endArrow=block;endFill=1;" edge="1" parent="1" source="core" target="b_func"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#fcd34d;endArrow=block;endFill=1;" edge="1" parent="1" source="core" target="b_load"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#86efac;endArrow=block;endFill=1;" edge="1" parent="1" source="core" target="b_int"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#c4b5fd;endArrow=block;endFill=1;" edge="1" parent="1" source="core" target="b_chaos"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#f9a8d4;endArrow=block;endFill=1;" edge="1" parent="1" source="core" target="b_sec"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#7dd3fc;endArrow=block;endFill=1;" edge="1" parent="1" source="core" target="b_auto"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#34d399;endArrow=block;endFill=1;" edge="1" parent="1" source="b_func" target="release"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#34d399;endArrow=block;endFill=1;" edge="1" parent="1" source="b_load" target="release"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#34d399;endArrow=block;endFill=1;" edge="1" parent="1" source="b_int" target="release"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#34d399;endArrow=block;endFill=1;" edge="1" parent="1" source="b_chaos" target="release"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#34d399;endArrow=block;endFill=1;" edge="1" parent="1" source="b_sec" target="release"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#34d399;endArrow=block;endFill=1;" edge="1" parent="1" source="b_auto" target="release"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

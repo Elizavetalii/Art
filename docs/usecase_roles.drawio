@@ -1,0 +1,199 @@
+<mxfile host="app.diagrams.net" modified="2026-02-22T17:20:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="usecase-roles" name="UseCase Roles">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="sys" value="Art Culinary CRM" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;strokeColor=#334155;fillColor=#f8fafc;" vertex="1" parent="1">
+          <mxGeometry x="220" y="40" width="1720" height="1240" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="a_guest" value="Гость/Пользователь системы" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=#64748b;fontColor=#111827;" vertex="1" parent="1">
+          <mxGeometry x="20" y="120" width="60" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_manager" value="Менеджер" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=#ef4444;fontColor=#111827;" vertex="1" parent="1">
+          <mxGeometry x="20" y="320" width="60" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_logist" value="Логист" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=#3b82f6;fontColor=#111827;" vertex="1" parent="1">
+          <mxGeometry x="20" y="560" width="60" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_courier" value="Курьер" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=#d97706;fontColor=#111827;" vertex="1" parent="1">
+          <mxGeometry x="20" y="820" width="60" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_picker" value="Сборщик заказов" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=#a855f7;fontColor=#111827;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1040" width="60" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_admin" value="Администратор системы" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=#16a34a;fontColor=#111827;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="620" width="60" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="u_login" value="Вход в систему" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="300" y="100" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_logout" value="Выход из системы" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="560" y="100" width="220" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_reset" value="Восстановление пароля по email" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="820" y="100" width="300" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="u_clients_crud" value="Управление клиентами (CRUD)" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="300" y="260" width="290" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_clients_search" value="Поиск и фильтрация клиентов" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="640" y="260" width="290" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_interactions" value="История взаимодействий с клиентом" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="980" y="260" width="300" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_funnel" value="Управление этапами сотрудничества" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="260" width="300" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="u_orders" value="Управление заказами (создание/редактирование/архив/удаление)" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="300" y="380" width="500" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_bulk_orders" value="Массовые операции с заказами" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="840" y="380" width="280" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_capacity_hints" value="Подсказки и ограничения производства" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="380" width="340" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_analytics" value="Просмотр аналитики продаж" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="300" y="500" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_reports" value="Формирование и управление отчетами" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="600" y="500" width="320" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_report_validate" value="Проверка данных отчета" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="960" y="500" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_proof_review" value="Проверка документов доставки" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="500" width="280" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="u_deliveries" value="Просмотр списка доставок" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="300" y="650" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_delivery_plan" value="Планирование доставки (дата/время)" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="580" y="650" width="330" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_routes" value="Управление маршрутами" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="950" y="650" width="240" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_stops" value="Формирование остановок маршрута" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="650" width="300" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_assign" value="Назначение курьера на маршрут" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="300" y="760" width="320" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_couriers_list" value="Просмотр списка курьеров" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="660" y="760" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_delivery_status_ctrl" value="Контроль статусов доставок" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="960" y="760" width="270" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="u_my_routes" value="Просмотр назначенных маршрутов" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="300" y="900" width="300" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_my_stops" value="Просмотр остановок маршрута" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="640" y="900" width="260" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_update_stop" value="Обновление статуса доставки/остановки" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="940" y="900" width="360" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_upload_proof" value="Загрузка документа доставки" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="900" width="280" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_history" value="История своих доставок" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1660" y="900" width="240" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="u_pick_orders" value="Просмотр заказов на сборку" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1040" width="280" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_pick_session" value="Запуск/ведение сессии сборки" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="620" y="1040" width="300" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_pick_status" value="Обновление статусов позиций" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="960" y="1040" width="280" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_pick_qty" value="Фиксация фактического количества" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="1040" width="300" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_pick_replace" value="Замена/комментарий по позиции" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1620" y="1040" width="280" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="u_admin_users" value="Управление пользователями" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="350" width="290" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_admin_roles" value="Управление ролями" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="430" width="290" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_admin_refs" value="Управление справочниками" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="510" width="290" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_admin_entities" value="Управление сущностями админ-панели" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="590" width="290" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_admin_audit" value="Просмотр журнала аудита" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="670" width="290" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_admin_archive" value="Управление архивом данных" style="ellipse;whiteSpace=wrap;html=1;strokeColor=#111827;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="750" width="290" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" style="endArrow=none;html=1;" edge="1" parent="1" source="a_guest" target="u_login"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="endArrow=none;html=1;" edge="1" parent="1" source="a_guest" target="u_logout"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="endArrow=none;html=1;" edge="1" parent="1" source="a_guest" target="u_reset"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e4" style="endArrow=none;html=1;" edge="1" parent="1" source="a_manager" target="u_clients_crud"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="endArrow=none;html=1;" edge="1" parent="1" source="a_manager" target="u_interactions"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="endArrow=none;html=1;" edge="1" parent="1" source="a_manager" target="u_funnel"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="endArrow=none;html=1;" edge="1" parent="1" source="a_manager" target="u_orders"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="endArrow=none;html=1;" edge="1" parent="1" source="a_manager" target="u_bulk_orders"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="endArrow=none;html=1;" edge="1" parent="1" source="a_manager" target="u_analytics"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="endArrow=none;html=1;" edge="1" parent="1" source="a_manager" target="u_reports"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" style="endArrow=none;html=1;" edge="1" parent="1" source="a_manager" target="u_proof_review"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e12" style="endArrow=none;html=1;" edge="1" parent="1" source="a_logist" target="u_deliveries"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" style="endArrow=none;html=1;" edge="1" parent="1" source="a_logist" target="u_delivery_plan"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14" style="endArrow=none;html=1;" edge="1" parent="1" source="a_logist" target="u_routes"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e15" style="endArrow=none;html=1;" edge="1" parent="1" source="a_logist" target="u_stops"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e16" style="endArrow=none;html=1;" edge="1" parent="1" source="a_logist" target="u_assign"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e17" style="endArrow=none;html=1;" edge="1" parent="1" source="a_logist" target="u_couriers_list"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e18" style="endArrow=none;html=1;" edge="1" parent="1" source="a_logist" target="u_delivery_status_ctrl"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e19" style="endArrow=none;html=1;" edge="1" parent="1" source="a_courier" target="u_my_routes"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e20" style="endArrow=none;html=1;" edge="1" parent="1" source="a_courier" target="u_my_stops"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e21" style="endArrow=none;html=1;" edge="1" parent="1" source="a_courier" target="u_update_stop"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e22" style="endArrow=none;html=1;" edge="1" parent="1" source="a_courier" target="u_upload_proof"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e23" style="endArrow=none;html=1;" edge="1" parent="1" source="a_courier" target="u_history"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e24" style="endArrow=none;html=1;" edge="1" parent="1" source="a_picker" target="u_pick_orders"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e25" style="endArrow=none;html=1;" edge="1" parent="1" source="a_picker" target="u_pick_session"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e26" style="endArrow=none;html=1;" edge="1" parent="1" source="a_picker" target="u_pick_status"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e27" style="endArrow=none;html=1;" edge="1" parent="1" source="a_picker" target="u_pick_qty"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e28" style="endArrow=none;html=1;" edge="1" parent="1" source="a_picker" target="u_pick_replace"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e29" style="endArrow=none;html=1;" edge="1" parent="1" source="a_admin" target="u_admin_users"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e30" style="endArrow=none;html=1;" edge="1" parent="1" source="a_admin" target="u_admin_roles"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e31" style="endArrow=none;html=1;" edge="1" parent="1" source="a_admin" target="u_admin_refs"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e32" style="endArrow=none;html=1;" edge="1" parent="1" source="a_admin" target="u_admin_entities"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e33" style="endArrow=none;html=1;" edge="1" parent="1" source="a_admin" target="u_admin_audit"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e34" style="endArrow=none;html=1;" edge="1" parent="1" source="a_admin" target="u_admin_archive"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="i1" value="include" style="endArrow=classic;dashed=1;html=1;strokeColor=#111827;fontColor=#111827;fontStyle=2;" edge="1" parent="1" source="u_clients_crud" target="u_clients_search"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="i2" value="include" style="endArrow=classic;dashed=1;html=1;strokeColor=#111827;fontColor=#111827;fontStyle=2;" edge="1" parent="1" source="u_orders" target="u_capacity_hints"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="i3" value="include" style="endArrow=classic;dashed=1;html=1;strokeColor=#111827;fontColor=#111827;fontStyle=2;" edge="1" parent="1" source="u_reports" target="u_report_validate"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="i4" value="include" style="endArrow=classic;dashed=1;html=1;strokeColor=#111827;fontColor=#111827;fontStyle=2;" edge="1" parent="1" source="u_routes" target="u_stops"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="i5" value="include" style="endArrow=classic;dashed=1;html=1;strokeColor=#111827;fontColor=#111827;fontStyle=2;" edge="1" parent="1" source="u_assign" target="u_couriers_list"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="x1" value="extend" style="endArrow=classic;dashed=1;html=1;strokeColor=#111827;fontColor=#111827;fontStyle=2;" edge="1" parent="1" source="u_upload_proof" target="u_update_stop"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
