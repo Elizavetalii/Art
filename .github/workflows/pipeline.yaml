@@ -25,7 +25,6 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          # Лучше ставить стабильную версию, которую точно поддерживает setup-python
           python-version: "3.12"
           cache: "pip"
 
