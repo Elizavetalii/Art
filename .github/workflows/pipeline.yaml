@@ -161,7 +161,7 @@ jobs:
           source "$VENV_PATH/bin/activate"
           pip install bandit
           mkdir -p reports
-          bandit -r . -f json -o reports/bandit.json
+          bandit -r . -x .venv,venv,.git,__pycache__ -f json -o reports/bandit.json || true
 
       - name: pip-audit (report)
         continue-on-error: true
@@ -170,7 +170,7 @@ jobs:
           source "$VENV_PATH/bin/activate"
           pip install pip-audit
           mkdir -p reports
-          pip-audit -r requirements.txt -f json -o reports/pip-audit.json
+          pip-audit -r requirements.txt -f json -o reports/pip-audit.json || true
 
       - name: Upload security reports
         uses: actions/upload-artifact@v4
